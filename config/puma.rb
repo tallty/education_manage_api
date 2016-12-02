@@ -5,7 +5,7 @@ threads 2, 128
 workers 2
 
 app_name = "education_online_train"
-application_path = "/home/edu/#{apip_name}"
+application_path = "/home/edu/#{app_name}"
 directory application_path
 
 pidfile "#{application_path}/tmp/pids/puma.pid"
