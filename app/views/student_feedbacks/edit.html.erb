@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="wrapper">
+    <div class="row">
+      <div class="personal_center right_message_tab col-md-3">
+        <%= render "user/personal_nav"%>
+      </div>
+      <div class="col-sm-9 courses">
+        <div class="panel panel-default course-panel">
+          <div class="panel-heading">
+            <%= render 'course_nav'%>
+          </div>
+          <div class="panel-body course-content">
+            <h3 class="text-center">学员评价</h3>
+            <hr>
+            <p>1.我对本期培训的感受（人选其一）</p>
+            <%= form_for([@training_course, @student_feedback], html: { class: 'form-horizontal' }, remote: true) do |f| %>
+              <div class="form-group">
+                <%= f.label :teach, '（1）课堂教学', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-4">
+                  <% StudentFeedback::CommentContent.each do |key, val|%>
+                    <%= radio_button_tag("student_feedback[teach]", key, @student_feedback.teach == key )%>
+                    <%= label_tag :teach, val %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :discussion, '（2）谈论交流', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-4">
+                  <% StudentFeedback::CommentContent.each do |key, val|%>
+                    <%= radio_button_tag("student_feedback[discussion]", key, @student_feedback.discussion == key)%>
+                    <%= label_tag :discussion, val %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :visiting, '（3）参观考察', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-4">
+                  <% StudentFeedback::CommentContent.each do |key, val|%>
+                    <%= radio_button_tag("student_feedback[visiting]", key, @student_feedback.visiting == key)%>
+                    <%= label_tag :visiting, val %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :organization, '（4）组织管理工作', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-4">
+                  <% StudentFeedback::Satisfaction.each do |key, val|%>
+                    <%= radio_button_tag("student_feedback[organization]", key, @student_feedback.organization == key)%>
+                    <%= label_tag :organization, val %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :study_life, '（5）学习和生活条件', class: 'col-sm-3 control-label' %>
+                <div class="col-sm-4">
+                  <% StudentFeedback::Satisfaction.each do |key, val|%>
+                    <%= radio_button_tag("student_feedback[study_life]", key, @student_feedback.study_life == key)%>
+                    <%= label_tag :study_life, val %>
+                  <% end %>
+                </div>
+              </div>
+              <p>2.我认为本期培训最有价值的课程和活动是什么？</p>
+              <%= f.text_area :most_value, size: "100x4", class: "form-control" %>
+              <p>3.通过本期培训的学习，我最大的感受与收获是什么？（如前瞻性信息的吸纳、思维方式的启迪以及对实际工作的帮助等）</p>
+              <%= f.text_area :most_gain, size: "100x4", class: "form-control" %>
+              <p>4.结业赠言</p>
+              <%= f.text_area :graduate_message, size: "100x4", class: "form-control" %>
+              <div class="text-center" style="margin-top: 30px">
+              	<%= f.submit "确认提交", class: "btn btn-primary"%>
+              </div>
+	          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

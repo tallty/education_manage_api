@@ -1,0 +1,16 @@
+// Place all the styles related to the admin_panel/grades controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.admin_panel__training_courses__show, .admin_panel__user_training_courses__index, .admin_panel__training_courses__detail,
+.admin_panel__tasks__index, .admin_panel__user_training_courses__list_by_journals {
+  .nav-content-menu li a {
+    color: #fff;
+  }
+  .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #337ab7;
+    background-color: #fff;
+    border-radius: 20px;
+  }
+}

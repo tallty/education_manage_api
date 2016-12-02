@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="wrapper">
+    <div class="row">
+      <div class="personal_center right_message_tab col-md-3">
+        <%= render "/user/personal_nav"%>
+      </div>
+      <div class="tab-content courses col-md-9">
+          <div class="right-nav-tab personal_center_content">
+            <strong class="col-md-3 right_message_tab"><span>个人信息</span></strong><br/><br/>
+            <div class="center_content">
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }, wrapper: :horizontal_form) do |f| %>
+                <%= f.input :current_password, label: "原始密码", placeholder: '请输入原始密码', autofocus: false %>
+                <%= f.input :password, label: "新密码", placeholder: '请输入新密码', autofocus: false %>
+                <%= f.input :password_confirmation, label: "确认密码", placeholder: '请输入确认密码', autofocus: false %>
+
+                <div class="col-sm-5 col-sm-offset-2">
+                <p class="text-center">
+                  <%= f.submit "确认修改", class: "btn btn-success", data: { disable_with: "信息提交中..." } %>
+                  <%= link_to("取消编辑", my_user_index_path , class: "btn btn-danger") %>
+                </p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

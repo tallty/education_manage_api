@@ -1,0 +1,55 @@
+<ol class="breadcrumb">
+  <li>
+    <%= link_to "后台", admin_panel_root_path  %>
+  </li>
+  <li>
+    <%= link_to "新闻动态", admin_panel_events_path %>
+  </li>
+  <li class="active">列表</li>
+</ol>
+
+<div class="main-content">
+	<div class="panel panel-default">
+	  <div class="panel-heading panel-active" style="overflow: hidden;">
+	    <span class="pull-left">新闻动态</span>
+	    <%= link_to new_admin_panel_event_path, class: "btn btn-xs pull-right btn-active", 'data-no-turbolink' => true do %>
+	       <span class="glyphicon glyphicon-plus-sign"></span> 新建
+	    <% end %>
+	  </div>
+	  <div class="panel-body panel-default-bg">
+	    <table class="table table-condensed table-bordered table-hover">
+	    	<thead>
+	    	  <tr>
+		    	<th class="col-sm-2 text-center">标题</th>
+		    	<th class="text-center">新闻类别</th>
+		    	<th class="text-center">教学设计比武大赛</th>
+		    	<th class="text-center">新闻主图</th>
+		    	<th class="text-center">操作</th>
+	    	  </tr>
+	    	</thead>
+	    	<tbody>
+	    	  <% @events.each do |event|%>
+		    	  <tr class="tr-default-bg">
+		    	  	<%#= truncate("dsfdsfadsf", length: 5) help方法%>
+		    	  	<%#= "dsfadsf".truncate(5) 字符串方法%>
+		    	  	<td class="text-center"><%= event.title.try(:truncate, 15) %></td>
+		    	  	<td class="text-center"><%= Event::EVENTCLASSIFY[event.classify.to_sym] %></td>
+		    	  	<td class="text-center"><%= event.is_competition ? "是" : "否" %></td>
+		    	  	<td class="text-center"><%= image_tag event.picture_url.url(:thumb) %></td>	
+		    	  	<td class="text-center">
+		    	  		<%= link_to edit_admin_panel_event_path(event), 'data-no-turbolink' => true do %>
+		    	  		<span class="glyphicon glyphicon-edit"></span> 修改
+		    	  		<% end %>
+		    	  		<%= link_to '删除', admin_panel_event_path(event),
+		    	  		method: :delete, data: { confirm: 'Are you sure?' } %>
+		    	  	</td>
+		    	  </tr>
+		    	<% end %>
+	    	</tbody>
+	    </table>
+	    <div class="text-center">
+			  <%= paginate @events %>
+     </div>
+	  </div>
+	</div>
+</div>

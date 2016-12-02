@@ -1,0 +1,65 @@
+<ol class="breadcrumb">
+  <li>
+    <%= link_to "后台", admin_panel_root_path  %>
+  </li>
+  <li>
+    <%= link_to "报名列表", list_admin_panel_user_training_courses_path  %>
+  </li>
+  <li class="active"><%= params[:keyword].present? ? "搜索结果" : "全部"%></li>
+</ol>
+
+<div class="grades-main-content">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">搜索栏</h3>
+    </div>
+    <div class="panel-body">
+      <%= form_tag list_admin_panel_user_training_courses_path, method: :get do %>
+        <div class="col-sm-3">
+          <div class="form-group">
+           <%= text_field_tag :keyword, nil, class: "form-control", placeholder: '请输入关键字' %>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <%= submit_tag "搜索", class: "btn primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        培训报名&nbsp;&nbsp;
+        <% @role_count.each do |key, value| %>
+          <small><%= "#{key}(#{value})" %></small>
+        <% end %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-condensed table-bordered">
+        <thead>
+          <tr>
+            <th class="text-center">培训班</th>
+            <th class="text-center">姓名</th>
+            <th class="text-center">账号</th>
+            <th class="text-center">性别</th>
+            <th class="text-center">联系方式</th>
+            <% if can? [:add, :added], UserTrainingCourse %>
+              <th class="text-center">证书编号</th>
+            <% end %>
+            <th class="text-center">日志</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "list_user_training_course", locals: {user_training_courses: @user_training_courses} %>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= paginate @user_training_courses %>
+      </div>
+    </div>
+  </div>
+<div>

@@ -1,0 +1,87 @@
+zh-CN:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      # text: 'required'
+      # mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+      html: '<span title="required" class="text-danger">*</span>'
+    error_notification:
+      default_message: "请重新填写红色框内容:"
+    labels:
+      user:
+        email: "邮箱"
+        email_confirmation: "确认邮箱"
+        password: "密码"
+        password_confirmation: "确认密码"
+        remember_me: "记住我"
+        name: "真实姓名"
+        ID_number: "身份证号"
+        gender: "性别"
+        birth: "出生日期"
+        school: "所在学校"
+        academy: "所在院系"
+        certificate: "职业资格证书"
+        country: "职业资格证书国家"
+        nation: "民族"
+        position_name: "职称"
+        position: "职务"
+        address: "通信地址"
+        zip_code: "邮编"
+        telephone: "电话"
+        phone: "手机"
+        qq_no: "QQ"
+        summary: "简介"
+        his_train: "历史培训"
+        role: "职位分类"
+      task:
+        title: "标题"
+        body: "内容"
+        training_course_id: "培训班"
+        attachment: "附件"
+      admin: 
+        username: "账号"
+        province: "省厅"
+        password: "密码"
+        password_confirmation: "确认密码"
+        email: "邮箱"
+        name: "姓名"
+        mobile: "手机"
+        phone: "电话"
+        address: "地址"
+        agency: "培训机构"
+        school_id: "培训机构"
+      teacher:
+        name: "姓名"
+        id_card: "身份证"
+        school_id: "培训机构"
+        job_title: "职称"
+        position: "职务"
+        sex: "性别"
+        address: "地址"
+        phone: "电话"
+        mobile: "手机"
+        email: "邮箱"
+        postcode: "邮编"
+        qq: "QQ"
+        remark: "备注"
+      user_task: 
+        title: "标题"
+        content: "内容"
+        attachment: "附件"
+    placeholders:
+      user:
+        email: '请输入电子邮箱'
+        password: '请输入密码'
+    prompts:
+      user:
+        school: '请选择学校'
+        country: '国家'
+    options:
+      user:
+        gender:
+          male: '男'
+          female: '女'

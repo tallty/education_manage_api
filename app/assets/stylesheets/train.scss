@@ -1,0 +1,120 @@
+// Place all the styles related to the train controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "variables";
+.content{
+	border-radius: 5px;
+	.left-head{
+		background: image-url("left_title_bg.png") no-repeat;
+		background-size: 100% 100%;
+		height: 40px;
+		line-height: 35px;
+		color: $color-white;
+	}
+	.left-body{
+		border:1px solid $color-gray-border;
+		border-top: 0px;
+		border-radius:0px 0px 8px 8px;
+		padding: 5px 0;
+		a{
+			color: $color-black;
+			&.active{
+				background: image-url("left_item_bg.png") no-repeat;
+				background-size: 95% 100%;
+				color: $color-blue;
+				background-position: center;
+			}
+		}
+	}
+	.right-head{
+		background: image-url("right_title_bg.png") no-repeat;
+		background-size: 100% 100%;
+		height: 35px;
+		line-height: 35px;
+		margin-top: 5px;
+		color: $color-white;
+		.head-btn{
+			font-size: 14px;
+			padding: 1px 5px;
+			border-radius: 12px;
+			margin-bottom: 4px;
+		}
+		.apply-input{
+			width: 140px;
+			height: 25px;
+			border-radius:12px; 
+			margin-bottom: 4px;
+		}
+	}
+	.right-body{
+		border:1px solid $color-gray-border;
+		border-radius:0px 0px 8px 8px;
+		border-top: 0px;
+		padding: 20px 10px;
+		.notice-index > li > a{
+			color: $color-black;
+		}
+		.notice-index span {
+			margin: 0 5px 0 0;
+		}
+		.notice-info{
+			color: $color-gray;
+			font-size: 12px;
+		}
+		.notice-index > div{
+			overflow: hidden; 
+			text-overflow:ellipsis;
+			white-space:nowrap;
+		}
+		.table > thead:first-child > tr:first-child > th, .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th{
+			text-align: center;
+			vertical-align: middle;
+			.cell-width{
+				width: 35px;
+			}
+		}
+		.table > thead:first-child > tr:first-child > th{
+			color: $color-blue;
+		}
+		.apply_info_nav > li{
+			background: image-url("apply_nav_bg.png") no-repeat;
+			background-size: 100% 100%;
+			height: 30px;
+			line-height: 25px;
+			&.active{
+				background: image-url("apply_nav_bg_active.png") no-repeat;
+				background-size: 100% 100%;
+				a, a:hover{
+					color: $color-white;
+				}
+			}
+			a,a:hover{
+				text-decoration: none;
+			}
+		}
+		.apply-btn{
+			background: #1c47a9!important;
+		}
+		dd{
+			margin: 20px 0;
+		}
+	}
+	.divider{
+		margin: 0 10px 0 10px;
+		border-width: 1px 0px 0px;
+		border-style: dashed none none;
+		border-color: $color-gray-border;
+	}
+	.target-content {
+		text-align: left;
+	}
+}
+.font-red{
+	color: $color-red;
+}
+.font-blue{
+	color: $color-blue;
+}
+.font-green{
+	color:$color-green;
+}

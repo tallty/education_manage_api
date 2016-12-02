@@ -1,0 +1,21 @@
+<!-- 内容详情部分开始 -->
+<div class="row">
+	<div class="container">
+		<div class="col-xs-12 news-show-content">
+			<div class="col-xs-12 report-show-title">
+				<div class="col-xs-2" style="padding-top: 4px;">内容详情</div>
+			</div>
+			<div class="col-xs-12 report-show-content">
+				<div class="col-xs-12 text-center">
+					<h4 class="show-news-title"><%= @event.title %></h4>
+					<span class="datatime"><%= @event.created_at.strftime("%F %H:%M:%S") %></span>
+					<hr class="show-new-hr">
+				</div>
+				<div class="news-show-text">
+					<%= raw @event.content%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 内容详情部分结束 -->

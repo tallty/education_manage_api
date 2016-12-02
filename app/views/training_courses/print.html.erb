@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="title">
+    <h3 class="text-center"><%= @training_course.name %></h1>
+    <h3 class="text-center">报名表</h1>
+  </div>
+  <div class="company">
+    <div class="text">
+      单位（公章）
+    </div>
+    <div class="line">
+      <%= current_user.school %>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th class="text-center col-sm-1">姓名</th>
+      <td><%= print_info current_user.name %></td>
+      <th class="text-center col-sm-1">性别</th>
+      <td><%= print_info current_user.gender %></td>
+      <th class="text-center col-sm-1">出生年月</th>
+      <td><%= print_info current_user.birth %></td>
+    </tr>
+    <tr>
+      <th class="text-center col-sm-1">职务</th>
+      <td><%= print_info current_user.position %></td>
+      <th class="text-center col-sm-1">职称</th>
+      <td><%= print_info current_user.position_name %></td>
+      <th class="text-center col-sm-1">专业</th>
+      <td><%= print_info current_user.profession %></td>
+    </tr>
+    <tr>
+      <th class="text-center col-sm-1">电话</th>
+      <td><%= print_info current_user.telephone %></td>
+      <th class="text-center col-sm-1">手机</th>
+      <td><%= print_info current_user.phone %></td>
+      <th class="text-center col-sm-1">电子邮件</th>
+      <td><%= print_info current_user.email %></td>
+    </tr>
+  </table>
+  <table class="infoList">
+    <tr>
+      <th>注意：</th>
+      <td><%= @training_course.try(:remark) %></td>
+    </tr>
+    <tr>
+      <th>联系人：</th>
+      <td><%= @training_course.try(:linkman) %></td>
+    </tr>
+    <tr>
+      <th>电话：</th>
+      <td><%= @training_course.try(:phone) %></td>
+    </tr>
+    <tr>
+      <th>传真：</th>
+      <td><%= @training_course.try(:fax) %></td>
+    </tr>
+    <tr>
+      <th>手机：</th>
+      <td><%= @training_course.try(:mobile) %></td>
+    </tr>
+    <tr>
+      <th>邮箱：</th>
+      <td><%= @training_course.try(:email) %></td>
+    </tr>
+  </table>
+</div>

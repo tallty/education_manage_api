@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>职称 / 职务</th>
+      <th>单位名称</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @training_course.training_course_teachers.each do |training_course_teacher| %>
+      <tr>
+        <td><%= training_course_teacher.try(:teacher).try(:name)%></td>
+        <td><%= Teacher::Sex[training_course_teacher.try(:teacher).try(:sex).try(:to_sym)]%></td>
+        <td><%= training_course_teacher.try(:teacher).try(:job_title)%></td>
+        <td><%= training_course_teacher.try(:teacher).try(:school).try(:name)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

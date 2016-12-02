@@ -1,0 +1,84 @@
+<div class="main-content">
+	<div class="panel panel-default">
+	  <div class="panel-heading panel-active">基本信息</div>
+	  <div class="panel-body panel-default-bg">
+	    <%= form_for @admin, url: update_profile_admin_panel_admins_path, html: { class: 'form-horizontal' }, method: :post do |f|%>
+
+    	  <div class="form-group">
+    	  	<%= f.label :username, '账号', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :username, value: current_admin.username, class: 'form-control', disabled: true %>
+    	  	</div>
+    	  	<%= f.label :role, '角色', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :role, value: Admin::Role[current_admin.role.to_sym], class: 'form-control', disabled: true %>
+    	  	</div>
+    	  </div>
+
+    	  <div class="form-group">
+    	  	<%= f.label :name, '姓名', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :name, class: 'form-control'  %>
+    	  	</div>
+            <%= f.label :address, '地址', class: 'col-sm-1 control-label' %>
+            <div class="col-sm-4">
+                <%= f.text_field :address, class: 'form-control', placeholder: '请输入管理员地址', required: true %>
+            </div>
+    	  </div>
+
+    	  <div class="form-group">
+    	  	<%= f.label :email, 'Email', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :email, class: 'form-control', placeholder: '请输入email', required: true %>
+    	  	</div>
+
+    	  	<%= f.label :phone, '电话', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :phone, class: 'form-control', placeholder: '请输入电话号码' %>
+    	  	</div>
+    	  </div>
+    	  <div class="form-group">
+    	  	<%= f.label :mobile, '手机', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :mobile, class: 'form-control', placeholder: '请输入手机号码', required: true %>
+    	  	</div>
+    	  	<%= f.label :qq, 'QQ', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :qq, class: 'form-control', placeholder: '请输入QQ号' %>
+    	  	</div>
+    	  </div>
+    	  <div class="form-group">
+    	  	<%= f.label :postcode, '邮编', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-4">
+    	  		<%= f.text_field :postcode, class: 'form-control', placeholder: '请输入邮编' %>
+    	  	</div>
+    	  </div>
+
+    	  <div class="form-group">
+    	  	<%= f.label :remark, '备注', class: 'col-sm-1 control-label' %>
+    	  	<div class="col-sm-9">
+              <%= f.text_area :remark, class: 'form-control', placeholder: '请输入备注信息', rows: "3" %>
+    	  	</div>
+    	  </div>
+
+    	  <div class="col-sm-6 col-sm-offset-4">
+    	    <%= f.submit '确认提交', class: "btn btn-primary pull-left", data: {disable_with: "提交中..."} %>
+    	  </div>
+    	<% end %>
+	  </div>
+	</div>
+	<div class="panel panel-default">
+	  <div class="panel-heading panel-active">访问信息</div>
+	  <div class="panel-body panel-default-bg">
+	    <table class="table">
+	    	<tbody>
+	    	  <tr class="tr-default-bg">
+	    	    <td class="text-center">最后登录IP <%= current_admin.last_sign_in_ip %></td>
+	    	  	<td class="text-center">最后登录时间 <%= current_admin.last_sign_in_at %></td>
+		    		<td class="text-center">登录次数 <%= current_admin.sign_in_count %></td>
+	    	  </tr>
+	    	</tbody>
+	    </table>
+	  </div>
+	</div>
+</div>

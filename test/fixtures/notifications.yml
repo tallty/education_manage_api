@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  sub_title  :string(255)
+#  view_count :integer          default(0)
+#  author     :string(255)
+#  content    :text(65535)
+#  category   :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  title: MyString
+  sub_title: MyString
+  view_count: 1
+  author: MyString
+  content: MyText
+  category: MyString
+
+two:
+  references: 
+  title: MyString
+  sub_title: MyString
+  view_count: 1
+  author: MyString
+  content: MyText
+  category: MyString

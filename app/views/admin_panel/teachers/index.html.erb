@@ -1,0 +1,75 @@
+<ol class="breadcrumb">
+  <li>
+    <%= link_to "后台", admin_panel_root_path  %>
+  </li>
+  <li class="active" >
+    机构人员
+  </li>
+  <li class="active" >
+    授课教师
+  </li>
+</ol>
+
+<div id="adminContent" class="grades-main-content">
+  <div class="panel panel-primary">
+    <div class="panel-heading have-menu">
+      <%= render "admin_panel/share/personnel_menu" %>
+    </div>
+      
+    <div id="adminList" class="panel-body">
+      <div class="row">
+        <div id="addJournal" class="add-btn pull-right">
+          <%= link_to(new_admin_panel_teacher_path,remote: true, format: :js) do %>
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 授课教师
+          <% end %>
+        </div>
+      </div>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>姓名</th>
+            <th>培训机构</th>
+            <th>职称</th>
+            <th>性别</th>
+            <th>地址</th>
+            <th>联系方式</th>
+            <th>带班数</th>
+            <th>创建&amp;修改时间</th>
+            <% if can? [:edit, :destroy], Teacher %>
+              <th>操作</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @teachers.each do |teacher| %>
+          <tr>
+            <td><%= teacher.name %></td>
+            <td><%= teacher.try(:school).try(:name) %></td>
+            <td><%= teacher.job_title %></td>
+            <td><%= Teacher::Sex[teacher.sex.to_sym] %></td>
+            <td><%= teacher.address %></td>
+            <td><%= teacher.phone %><br><%= teacher.mobile %><br><%= teacher.qq %></td>
+            <td><%= teacher.try(:training_course_teachers).try(:size) %></td>
+            <td><%= teacher.updated_at.strftime "%Y-%m-%d %H:%M:%S" %></td>
+            <% if can? [:edit, :destroy], Teacher%>
+              <td>
+                <%= link_to("编辑",edit_admin_panel_teacher_path(teacher),remote: true, format: :js)  %>
+                <%= link_to("删除", admin_panel_teacher_path(teacher) , method: :delete, data: {confirm: "确定要删除当前用户？"}) %>
+              </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="text-center">
+        <%= paginate @teachers %>
+      </div>
+    </div>
+  </div>
+<div>
+
+<div id="adminCreate">
+  
+</div>
+

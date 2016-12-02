@@ -1,0 +1,98 @@
+<% if params[:action] == "index" && params[:role].blank? && params[:status].blank? %>
+  <hr>
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-sm-10">
+      <span>分组：</span>
+      <% if @training_course.divides.present? %>
+        <% @training_course.divides.each do |divide| %>
+          <%= link_to divide_number(divide), admin_panel_training_course_user_training_courses_path(@training_course, divide_id: divide.id, role: params[:role], status: params[:status]), class: "btn btn-primary btn-xs"  %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<% end %>
+<%= form_tag update_multiple_admin_panel_training_course_user_training_courses_path(@training_course), id: "js-select-form", method: :patch, :authenticity_token => true do %>
+  <% user_training_courses.each do |user_training_course| %>
+    <% role = user_training_course.try(:user).try(:role) %>
+    <% if role == params[:role] || params[:role].nil? %>
+      <tr>
+        <td class="text-center">
+          <%= check_box_tag "user_training_course[]", user_training_course.id, false, class: 'user-training-course' %>
+        </td>
+        <td><%= user_training_course.try(:divide).try(:name) %></td>
+        <td><%= user_training_course.try(:divide).try(:header) %></td>
+        <td>
+          <%= user_training_course.try(:user).try(:name)%>
+          <% if role == "full_time" %>
+            (<span class="text-primary"><%= User::ROLE[role.to_sym] %></span>)
+          <% else %>
+            (<span class="text-danger"><%= User::ROLE[role.to_sym] %></span>)
+          <% end %>
+        </td>
+        <td><%= user_training_course.try(:user).try(:email)%></td>
+        <td><%= User::UserGender[user_training_course.try(:user).try(:gender).to_sym]%></td>
+        <td><%= user_training_course.try(:user).try(:address)%></td>
+        <% if can? [:add, :added], UserTrainingCourse %>
+          <td><%= link_to user_training_course.certificate_no.present? ? user_training_course.certificate_no : "证书编号", add_admin_panel_training_course_user_training_course_path(user_training_course.training_course, user_training_course), remote: true %></td>
+        <% end %>
+        <td><%= link_to "用户日志", admin_panel_user_training_course_journals_path(user_training_course)%>
+        </td>
+        <% unless current_page?(controller: "user_training_courses", action: "list")%>
+          <% if can? [:applied, :disapplied, :add, :added], UserTrainingCourse %>
+            <td>
+              <%= link_to "备注信息", edit_admin_panel_training_course_user_training_course_path(@training_course, user_training_course), class: "btn btn-xs btn-success"%>
+            </td>
+            <td>
+              <% if user_training_course.state == nil %>
+                <%= link_to "待审核", applied_admin_panel_training_course_user_training_course_path(@training_course, user_training_course), method: :patch, data: {confirm: '确认通过该报名吗？'}, class: "btn btn-xs btn-danger"%>
+              <% elsif user_training_course.state == false %>
+                <%= link_to "未通过", applied_admin_panel_training_course_user_training_course_path(@training_course, user_training_course), method: :patch, data: {confirm: '确认通过该报名吗？'}, class: "btn btn-xs btn-danger"%>
+              <% elsif user_training_course.state == true %>
+                <%= link_to "已通过", disapplied_admin_panel_training_course_user_training_course_path(@training_course, user_training_course), method: :patch, data: {confirm: '确认撤销通过该报名吗？'}, class: "btn btn-xs btn-success"%>
+              <% else @training_course.plan_number.to_i - @applied_user_training_courses.count <= 0 %>
+                <%= link_to "未通过", "javascript:void(0)", method: :patch, data: {confirm: '警告：通过人数将不能大于计划人数' }, class: "btn btn-xs btn-danger" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to delete_admin_panel_training_course_user_training_course_path(@training_course, user_training_course), method: :patch, data: { confirm: '确定要删除吗？' }, class: 'btn btn-xs btn-danger' do %>
+                <span class="glyphicon glyphicon-remove"></span>
+              <% end %>
+            </td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  <% end %>
+  <% if can? :update_multiple, UserTrainingCourse %>
+    <!-- 全部列表显示分组按钮 -->
+    <% if params[:action] == "index" && params[:role].blank? && params[:status].blank? %>
+      <%= select_tag "divide_id", options_for_select(@training_course.divides.collect{|v| [v.name, v.id]}), {:prompt => "--选择分组--"} %>
+    <% end %>
+  <% end %>
+<% end %>
+<!-- 添加证书编号 -->
+<div id="AddModal" class="modal fade" role="dialog">
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    var form = $("#js-select-form");
+    $("#divide_id").change(function(){
+      form.submit();
+    })
+
+    var checked = $("#js-checked-all");
+    checked.click(function(){
+      if(checked.is(":checked")) {
+        $(".user-training-course").each(function(){
+          $(this).prop("checked", true)
+        })
+      } else {
+        $(".user-training-course").each(function(){
+          $(this).prop("checked", false)
+        })
+      }
+    })
+  });
+</script>

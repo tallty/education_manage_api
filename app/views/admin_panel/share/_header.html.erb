@@ -1,0 +1,23 @@
+<nav class="nav-bar">
+  <div class="container-fluid">
+    <div class="col-sm-9">
+      <%= link_to "上海高等职业教育师资公共培训统一管理平台", admin_panel_root_path, class: "name" %>
+    </div>
+    <div class="col-sm-1 pull-left text-center">
+      <%= link_to admin_panel_root_path do%>
+       <span class="glyphicon glyphicon-home "></span> 门户首页
+      <% end %>
+    </div>
+    <div class="col-sm-1 pull-left text-center">
+      <%= link_to "javascript: window.location.href = window.location.href;" do%>
+        <span class="glyphicon glyphicon-refresh "></span> 刷新页面
+      <% end %>
+    </div>
+    <div class="col-sm-1 pull-left text-center">
+      <%= link_to destroy_admin_session_path, method: :delete do%>
+         <span class="glyphicon glyphicon-minus-sign "></span> 注销系统
+      <% end %>
+    </div>
+    </div>
+  </div>
+</nav>

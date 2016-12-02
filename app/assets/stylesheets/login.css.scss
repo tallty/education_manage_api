@@ -1,0 +1,133 @@
+//登录
+body.devise__sessions__new {
+  .panel-body {
+    font-family: "STSong";
+    padding-bottom: 0px;
+    table {
+      margin-bottom: 0px;
+      tr td {
+        border: 0;
+        .form-group {
+          margin-bottom: 0px;
+        }
+      }
+    }
+    p {
+      text-indent: 2em;
+      line-height: 1.8;
+    }
+  }
+
+  .self-info {
+      min-height: 324px;
+  }
+  
+  div.checkbox {
+    margin: 0px;
+  }
+
+  div.input-group {
+    width: 100%;
+  }
+
+  .half-width {
+      width: 49%;
+  }
+
+  .panel-list, .oh {
+      overflow: hidden;
+  }
+
+  .panel-bg {
+    height: 37px;
+    background: image-url("panel-bg.png") repeat-x 0 0;
+  }
+  .panel {
+    position: relative;
+    border-top: 0 none;
+  }
+  .title-bg {
+    height: 37px;
+    width: 127px;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    text-align: center;
+    line-height: 37px;
+    color: #fff;
+    background: image-url("login-bg.png") no-repeat 0 0;
+  }
+
+  ul li.list-group-item {
+    border: 0px;
+    overflow: hidden;
+    position: relative;
+    padding: 6px 10px;
+    &:before {
+      content: image-url("our-cir.png");
+      position: absolute;
+    }
+    span {
+      padding-left: 15px;
+    }
+  }
+}
+
+
+//注册
+body.devise__registrations__new, body.devise__registrations__create {
+ 
+  img[alt='captcha']:hover {
+    cursor:pointer;
+  }
+
+  .half-width {
+      width: 49%;
+  }
+
+  .panel-list, .oh {
+      overflow: hidden;
+  }
+
+  .panel-bg {
+    height: 37px;
+    background: image-url("panel-bg.png") repeat-x 0 0;
+  }
+  .panel {
+    position: relative;
+    border-top: 0 none;
+    font-family: "STSong";
+    label {
+      font-weight: normal;
+    }
+  }
+  .title-bg {
+    height: 37px;
+    width: 127px;
+    position: absolute;
+    top: 0;
+    left: -1px;
+    text-align: center;
+    line-height: 37px;
+    color: #fff;
+    background: image-url("login-bg.png") no-repeat 0 0;
+  }
+
+  .user_captcha {
+    display: inline;
+    input {
+      width: 50%;
+      display: inline;
+    }
+  }
+  .user_certificate {
+    input.string {
+      width: 60%;
+      display: inline;
+    }
+     select.select {
+      width: 38%;
+      display: inline;
+    }
+  }
+}

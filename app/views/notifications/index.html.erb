@@ -1,0 +1,35 @@
+<% if params[:category] %>
+  <% @notifications = @search_notifications %>
+<% else %>
+  <% @notifications = @all_notifications %>
+<% end %>
+<div class="wrapper">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="content">
+				<div class="right-head">
+					<div class="col-xs-2 text-center"><strong>培训通知</strong></div>
+				</div>
+				<div class="right-body">
+					<ul class="nav nav-stacked notice-index">
+					  <% @notifications.each do |notification|%>
+							<li role="presentation">
+								<a href="<%= notification_path(notification) %>">
+									<div class="row notice-index">
+										<div class="col-xs-10"><span><%= image_tag "notice_index_icon.png"%></span><%= notification.try(:title)%></div>
+										<div class="col-xs-2 text-right font-red"><%= notification.created_at.strftime("%Y-%m-%d")%></div>
+									</div>
+								</a>
+							</li>
+						<% end %>
+						<hr class="divider">
+					</ul>
+					<br>
+					<div class="text-center">
+					  <%= paginate @notifications %>
+          </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
