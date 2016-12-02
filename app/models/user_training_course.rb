@@ -52,7 +52,7 @@ class UserTrainingCourse < ActiveRecord::Base
   # 统计报名学员的不同职位人数
   def self.role_count
     cache = User.includes(:user_training_courses).group(:role).count
-    cache.map { |k, v| [User::ROLE[User.find_by_role(k).role.to_sym], v] }.to_h
+    cache.map { |k, v| [User::ROLE[User.find_by_role(k).role.to_s], v] }.to_h
   end
 
   #搜索功能
