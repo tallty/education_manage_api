@@ -1,5 +1,5 @@
 GEM
-  remote: https://ruby.taobao.org/
+  remote: https://gems.ruby-china.org/
   specs:
     aasm (4.2.0)
     actionmailer (4.2.1)
@@ -37,6 +37,13 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    annotate (2.7.1)
+      activerecord (>= 3.2, < 6.0)
+      rake (>= 10.4, < 12.0)
+    apitome (0.1.0)
+      kramdown
+      railties
+      rspec_api_documentation
     arel (6.0.0)
     autoprefixer-rails (5.2.0)
       execjs
@@ -77,10 +84,17 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-i18n (1.1.1)
+    diff-lcs (1.2.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.5.2)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -102,6 +116,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.3)
+    kramdown (1.13.0)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -124,6 +139,7 @@ GEM
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.0)
+    mustache (1.0.3)
     mysql2 (0.3.18)
     nested_form (0.3.2)
     net-http-digest_auth (1.4)
@@ -146,6 +162,7 @@ GEM
       sass-rails (~> 5.0)
     puma (3.6.0)
     rack (1.6.4)
+    rack-cors (0.4.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -167,6 +184,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails-i18n (4.0.9)
+      i18n (~> 0.7)
+      railties (~> 4.0)
     rails_kindeditor (0.4.5)
       carrierwave
       mini_magick
@@ -181,6 +201,31 @@ GEM
     remotipart (1.2.1)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-rails (3.5.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
+    rspec_api_documentation (4.8.0)
+      activesupport (>= 3.0.0)
+      mustache (~> 1.0, >= 0.99.4)
+      rspec (~> 3.0, >= 3.0.0)
     ruby-ole (1.2.11.8)
     sass (3.4.14)
     sass-rails (5.0.3)
@@ -192,9 +237,15 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
+    simple_token_authentication (1.14.0)
+      actionmailer (>= 3.2.6, < 6)
+      actionpack (>= 3.2.6, < 6)
+      devise (>= 3.2, < 6)
     spreadsheet (1.0.8)
       ruby-ole (>= 1.0)
     spreadsheet_on_rails (1.0.0)
@@ -239,6 +290,7 @@ GEM
     whenever (0.9.4)
       chronic (>= 0.6.3)
     wicked_pdf (1.0.4)
+    will_paginate (3.1.5)
     wkhtmltopdf-binary (0.9.9.3)
 
 PLATFORMS
@@ -246,11 +298,15 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 4.2.0)
+  annotate
+  apitome
   bootstrap-sass (~> 3.3.4)
   byebug
   cancancan (~> 1.12.0)
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.1)
+  devise-i18n
+  factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
@@ -265,12 +321,19 @@ DEPENDENCIES
   paperclip (~> 4.3)
   pdfjs_viewer-rails
   puma (~> 3.0)
+  rack-cors
   rails (= 4.2.1)
+  rails-i18n
   rails_kindeditor
   remotipart (~> 1.2)
+  responders
+  rspec-rails (~> 3.5)
+  rspec_api_documentation
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shoulda-matchers (~> 3.1)
   simple_form (~> 3.1.0)
+  simple_token_authentication
   spreadsheet_on_rails
   spring
   sprockets (~> 2.12.3)
@@ -281,6 +344,7 @@ DEPENDENCIES
   web-console (~> 2.0)
   whenever
   wicked_pdf
+  will_paginate
   wkhtmltopdf-binary
 
 BUNDLED WITH
