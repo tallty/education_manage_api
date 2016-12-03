@@ -1,1 +1,1 @@
-json.extract! @admin_sign, :id, :created_at, :updated_at
+json.partial! 'admin/signs/admin_sign', admin_sign: @admin_sign
