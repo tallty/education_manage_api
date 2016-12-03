@@ -10,6 +10,8 @@
 #  updated_at         :datetime         not null
 #  remark             :string(255)
 #  certificate_no     :string(255)
+#  divide_id          :integer
+#  deleted_at         :datetime
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

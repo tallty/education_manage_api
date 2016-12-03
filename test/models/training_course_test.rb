@@ -35,6 +35,8 @@
 #  fax                 :string(255)
 #  mobile              :string(255)
 #  email               :string(255)
+#  task_end_time       :datetime
+#  journal_number      :integer
 #
 
 require 'test_helper'
