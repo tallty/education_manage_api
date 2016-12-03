@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  ####################################################################
   resources :signs, only: [:index, :show, :create]
-  resources :syllabuses, only: [:index, :show, :create, :update, :destroy]
+  resources :syllabuses, only: [:index, :show]
+
+  namespace :admin do
+    resources :signs, only: [:index, :show]
+    resources :syllabuses, only: [:index, :show, :create, :update, :destroy]
+  end
+
+  ####################################################################
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   resources :training_courses, only: [:index, :show] do
     member do
