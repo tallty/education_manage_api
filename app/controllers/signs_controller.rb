@@ -1,63 +1,32 @@
 class SignsController < ApplicationController
-  before_action :set_sign, only: [:show, :edit, :update, :destroy]
+  before_action :set_sign, only: [:show]
+
+  respond_to :json, :html
 
   # GET /signs
   # GET /signs.json
   def index
-    @signs = Sign.all
+    page = params[:page] || 1
+    per_page = params[:per_page]
+    @signs = Sign.all.paginate(page: page, per_page: per_page)
+    respond_with(@signs)
   end
 
   # GET /signs/1
   # GET /signs/1.json
   def show
-  end
-
-  # GET /signs/new
-  def new
-    @sign = Sign.new
-  end
-
-  # GET /signs/1/edit
-  def edit
+    respond_with(@sign)
   end
 
   # POST /signs
   # POST /signs.json
   def create
     @sign = Sign.new(sign_params)
-
-    respond_to do |format|
-      if @sign.save
-        format.html { redirect_to @sign, notice: 'Sign was successfully created.' }
-        format.json { render :show, status: :created, location: @sign }
-      else
-        format.html { render :new }
-        format.json { render json: @sign.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /signs/1
-  # PATCH/PUT /signs/1.json
-  def update
-    respond_to do |format|
-      if @sign.update(sign_params)
-        format.html { redirect_to @sign, notice: 'Sign was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sign }
-      else
-        format.html { render :edit }
-        format.json { render json: @sign.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /signs/1
-  # DELETE /signs/1.json
-  def destroy
-    @sign.destroy
-    respond_to do |format|
-      format.html { redirect_to signs_url, notice: 'Sign was successfully destroyed.' }
-      format.json { head :no_content }
+    if @sign.save
+      respond_with(@sign)
+    else
+      @error = "签到 失败 ！"
+      respond_with(@error)
     end
   end
 
