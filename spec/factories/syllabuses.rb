@@ -14,10 +14,10 @@
 
 FactoryGirl.define do
   factory :syllabus do
-    training_course nil
-    school nil
-    course_time "2016-12-03 16:59:52"
-    title "MyString"
-    content "MyText"
+    training_course 1
+    school 1
+    course_time "#{Time.zone.now}"
+    title "XXXXXX培训课"
+    content "课程内容XX"
   end
 end
