@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203085952) do
+ActiveRecord::Schema.define(version: 20161203091543) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -194,6 +194,19 @@ ActiveRecord::Schema.define(version: 20161203085952) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "signs", force: :cascade do |t|
+    t.integer  "training_course_id", limit: 4
+    t.integer  "school_id",          limit: 4
+    t.integer  "user_id",            limit: 4
+    t.datetime "sign_time"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "signs", ["school_id"], name: "index_signs_on_school_id", using: :btree
+  add_index "signs", ["training_course_id"], name: "index_signs_on_training_course_id", using: :btree
+  add_index "signs", ["user_id"], name: "index_signs_on_user_id", using: :btree
 
   create_table "student_feedbacks", force: :cascade do |t|
     t.integer  "user_id",            limit: 4
@@ -397,6 +410,9 @@ ActiveRecord::Schema.define(version: 20161203085952) do
 
   add_foreign_key "manager_feedbacks", "admins"
   add_foreign_key "manager_feedbacks", "training_courses"
+  add_foreign_key "signs", "schools"
+  add_foreign_key "signs", "training_courses"
+  add_foreign_key "signs", "users"
   add_foreign_key "syllabuses", "schools"
   add_foreign_key "syllabuses", "training_courses"
   add_foreign_key "training_course_teachers", "teachers"
