@@ -1,64 +1,47 @@
 class SyllabusesController < ApplicationController
-  before_action :set_syllabus, only: [:show, :edit, :update, :destroy]
+  before_action :set_syllabus, only: [:show, :update, :destroy]
+
+  respond_to :json, :html
 
   # GET /syllabuses
   # GET /syllabuses.json
   def index
-    @syllabuses = Syllabus.all
+    page = params[:page] || 1
+    per_page = params[:per_page] || 5
+    @syllabuses = Syllabus.all.paginate(page: page, per_page:per_page)
+    respond_with(@syllabuses)
   end
 
   # GET /syllabuses/1
   # GET /syllabuses/1.json
   def show
-  end
-
-  # GET /syllabuses/new
-  def new
-    @syllabus = Syllabus.new
-  end
-
-  # GET /syllabuses/1/edit
-  def edit
+    respond_with(@syllabus)
   end
 
   # POST /syllabuses
   # POST /syllabuses.json
   def create
     @syllabus = Syllabus.new(syllabus_params)
-
-    respond_to do |format|
-      if @syllabus.save
-        format.html { redirect_to @syllabus, notice: 'Syllabus was successfully created.' }
-        format.json { render :show, status: :created, location: @syllabus }
-      else
-        format.html { render :new }
-        format.json { render json: @syllabus.errors, status: :unprocessable_entity }
-      end
+    if @syllabus.save
+      respond_with(@syllabus)
+    else
+      @error = "课程表创建失败 ！"
+      respond_with(@error)
     end
   end
 
   # PATCH/PUT /syllabuses/1
   # PATCH/PUT /syllabuses/1.json
   def update
-    respond_to do |format|
-      if @syllabus.update(syllabus_params)
-        format.html { redirect_to @syllabus, notice: 'Syllabus was successfully updated.' }
-        format.json { render :show, status: :ok, location: @syllabus }
-      else
-        format.html { render :edit }
-        format.json { render json: @syllabus.errors, status: :unprocessable_entity }
-      end
-    end
+    @syllabus.update(syllabus_params)
+    respond_with(@syllabus) 
   end
 
   # DELETE /syllabuses/1
   # DELETE /syllabuses/1.json
   def destroy
     @syllabus.destroy
-    respond_to do |format|
-      format.html { redirect_to syllabuses_url, notice: 'Syllabus was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    respond_with(@syllabus)
   end
 
   private
