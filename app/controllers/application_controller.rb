@@ -1,4 +1,9 @@
+require "application_responder"
+
 class ApplicationController < ActionController::Base
+  self.responder = ApplicationResponder
+  respond_to :html
+
   # reset captcha code after each request for security
   #after_filter :reset_last_captcha_code!
 
