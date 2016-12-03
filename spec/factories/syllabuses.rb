@@ -14,8 +14,8 @@
 
 FactoryGirl.define do
   factory :syllabus do
-    training_course 1
-    school 1
+    training_course_id 1
+    school_id 1
     course_time "#{Time.zone.now}"
     title "XXXXXX培训课"
     content "课程内容XX"

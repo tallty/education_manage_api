@@ -412,12 +412,6 @@ ActiveRecord::Schema.define(version: 20161203105320) do
 
   add_foreign_key "manager_feedbacks", "admins"
   add_foreign_key "manager_feedbacks", "training_courses"
-  add_foreign_key "signs", "schools"
-  add_foreign_key "signs", "syllabuses"
-  add_foreign_key "signs", "training_courses"
-  add_foreign_key "signs", "users"
-  add_foreign_key "syllabuses", "schools"
-  add_foreign_key "syllabuses", "training_courses"
   add_foreign_key "training_course_teachers", "teachers"
   add_foreign_key "training_course_teachers", "training_courses"
   add_foreign_key "user_training_courses", "training_courses"

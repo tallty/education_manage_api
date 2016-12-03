@@ -58,7 +58,7 @@ resource "学员 签到 相关的API" do
 
       example "学员 查询 签到 记录 成功" do
         do_request
-        puts response_bodys
+        puts response_body
         expect(status).to eq(200)
       end
     end

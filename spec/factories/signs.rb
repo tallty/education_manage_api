@@ -17,6 +17,7 @@ FactoryGirl.define do
     training_course_id 1
     school_id 1
     user_id 1
+    syllabus_id 1
     sign_time "#{Time.zone.now}"
   end
 end

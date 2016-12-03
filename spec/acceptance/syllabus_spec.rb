@@ -58,7 +58,7 @@ resource "管理员对 课程表 相关的API" do
 
       example "管理员 查询 课程表 记录 成功" do
         do_request
-        puts response_bodys
+        puts response_body
         expect(status).to eq(200)
       end
     end
