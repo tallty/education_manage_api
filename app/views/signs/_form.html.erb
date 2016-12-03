@@ -1,0 +1,14 @@
+<%= simple_form_for(@sign) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :training_course %>
+    <%= f.association :school %>
+    <%= f.association :user %>
+    <%= f.input :sign_time %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

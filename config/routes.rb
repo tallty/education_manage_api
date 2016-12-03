@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :signs
   resources :syllabuses
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   resources :training_courses, only: [:index, :show] do
