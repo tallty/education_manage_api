@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :signs
-  resources :syllabuses
+  resources :signs, only: [:index, :show, :create]
+  resources :syllabuses, only: [:index, :show, :create, :update, :destroy]
   mount PdfjsViewer::Rails::Engine => "/pdfjs", as: 'pdfjs'
   resources :training_courses, only: [:index, :show] do
     member do
