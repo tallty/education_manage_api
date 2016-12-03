@@ -1,4 +1,5 @@
 class SignsController < ApplicationController
+  acts_as_token_authentication_handler_for User
   before_action :set_sign, only: [:show]
 
   respond_to :json, :html
