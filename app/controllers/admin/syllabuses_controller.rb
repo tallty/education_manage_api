@@ -1,4 +1,4 @@
-class SyllabusesController < ApplicationController
+class Admin::SyllabusesController < ApplicationController
   # acts_as_token_authentication_handler_for Admin
   before_action :set_admin_syllabus, only: [:show, :update, :destroy]
 
@@ -16,7 +16,7 @@ class SyllabusesController < ApplicationController
   end
 
   def create
-    @admin_syllabus = Syllabus.new(syllabus_params)
+    @admin_syllabus = Syllabus.new(admin_syllabus_params)
     if @admin_syllabus.save
       respond_with(@admin_syllabus)
     else
@@ -27,7 +27,7 @@ class SyllabusesController < ApplicationController
 
   def update
     @admin_syllabus.update(admin_syllabus_params)
-    respond_with(@admin_syllabus)
+    respond_with(@admin_syllabus, template: "admin/syllabuses/show", status: 201)
   end
 
   def destroy

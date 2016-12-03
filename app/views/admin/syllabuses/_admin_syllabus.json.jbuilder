@@ -1,10 +1,3 @@
-<%= simple_form_for(@admin_syllabus) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+json.extract! admin_syllabus, :id, :course_time, :title, :content, :created_at, :updated_at
+json.training_course_name admin_syllabus.training_course.try(:name)
+json.school_name admin_syllabus.school.try(:name)
