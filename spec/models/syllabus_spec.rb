@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Syllabus, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:school) } 
+  it { should belong_to(:training_course) }
+  it { should have_many(:user_info) }
 end
