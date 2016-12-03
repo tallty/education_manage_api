@@ -1,4 +1,4 @@
-json.array!(@syllabuses) do |syllabus|
-  json.extract! syllabus, :id, :training_course_id, :school_id, :course_time, :title, :content
-  json.url syllabus_url(syllabus, format: :json)
-end
+json.current_page @syllabuses.current_page
+json.total_pages @syllabuses.total_pages
+
+json.syllabuses @syllabuses, partial: 'syllabuses/syllabus', as: :syllabus
