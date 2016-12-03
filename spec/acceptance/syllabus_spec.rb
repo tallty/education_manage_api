@@ -6,21 +6,21 @@ resource "管理员对 课程表 相关的API" do
   #################### create #############################
   post '/syllabuses' do
     # admin_attrs = FactoryGirl.attributes_for(:admin)
-    # syllabuse_attrs = FactoryGirl.attributes_for(:syllabuse)
+    syllabus_attrs = FactoryGirl.attributes_for(:syllabus)
 
-    # # header "X-Admin-Token", admin_attrs[:authentication_token]
-    # # header "X-Admin-Email", admin_attrs[:email]
-    # parameter :title, " 课程表 课程的标题",required: true, scope: :syllabuse
-    # parameter :training_course_id, "课程表 课程 属于的项目",required: true, scope: :syllabuse
-    # parameter :school_id, "课程表 课程属于的 学校",required: true, scope: :syllabuse
-    # parameter :course_time, "课程表 课程的开课 时间",required: true, scope: :syllabuse
-    # parameter :content, "课程表 课程简介",required: true, scope: :syllabuse
+    # header "X-Admin-Token", admin_attrs[:authentication_token]
+    # header "X-Admin-Email", admin_attrs[:email]
+    parameter :title, " 课程表 课程的标题",required: true, scope: :syllabus
+    parameter :training_course_id, "课程表 课程 属于的项目",required: true, scope: :syllabus
+    parameter :school_id, "课程表 课程属于的 学校",required: true, scope: :syllabus
+    parameter :course_time, "课程表 课程的开课 时间",required: true, scope: :syllabus
+    parameter :content, "课程表 课程简介",required: true, scope: :syllabus
 
-    # let(:title) {syllabuse_attrs[:title]}
-    # let(:training_course_id) {syllabuse_attrs[:training_course_id]}
-    # let(:school_id) {syllabuse_attrs[:school_id]}
-    # let(:course_time) {syllabuse_attrs[:course_time]}
-    # let(:content) {syllabuse_attrs[:content]}
+    let(:title) {syllabus_attrs[:title]}
+    let(:training_course_id) {syllabus_attrs[:training_course_id]}
+    let(:school_id) {syllabus_attrs[:school_id]}
+    let(:course_time) {syllabus_attrs[:course_time]}
+    let(:content) {syllabus_attrs[:content]}
 
     before do
       # @admin = create(:admin)
@@ -28,7 +28,7 @@ resource "管理员对 课程表 相关的API" do
       # @training_course = create(:training_course)
     end
 
-    example "管理员 课程表 成功" do
+    example "管理员 创建课程表 成功" do
       do_request
       puts response_body
       expect(status).to eq(201)
@@ -78,6 +78,20 @@ resource "管理员对 课程表 相关的API" do
     put "/syllabuses/:id" do
 
       let(:id) {@syllabuses.first.id}
+
+      syllabus_attrs = FactoryGirl.attributes_for(:syllabus)
+
+      parameter :title, " 课程表 课程的标题",required: true, scope: :syllabus
+      parameter :training_course_id, "课程表 课程 属于的项目",required: true, scope: :syllabus
+      parameter :school_id, "课程表 课程属于的 学校",required: true, scope: :syllabus
+      parameter :course_time, "课程表 课程的开课 时间",required: true, scope: :syllabus
+      parameter :content, "课程表 课程简介",required: true, scope: :syllabus
+
+      let(:title) {syllabus_attrs[:title]}
+      let(:training_course_id) {syllabus_attrs[:training_course_id]}
+      let(:school_id) {syllabus_attrs[:school_id]}
+      let(:course_time) {syllabus_attrs[:course_time]}
+      let(:content) {syllabus_attrs[:content]}
 
       example " 管理员 修改指定 课程表 成功" do
         do_request
