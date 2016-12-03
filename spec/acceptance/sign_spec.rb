@@ -47,7 +47,7 @@ resource "学员 签到 相关的API" do
       @signs = create_list(:sign, 5, sign_time: Time.zone.now)
     end
 
-    #################### index #############################
+  #################### index #############################
     get '/signs' do
 
   	  parameter :page, "当前页", required: false
