@@ -9,6 +9,7 @@
 #  sign_time          :datetime
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  syllabus_id        :integer
 #
 
 class Sign < ActiveRecord::Base

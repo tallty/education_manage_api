@@ -9,13 +9,14 @@
 #  sign_time          :datetime
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  syllabus_id        :integer
 #
 
 FactoryGirl.define do
   factory :sign do
-    training_course 1
-    school 1
-    user 1
+    training_course_id 1
+    school_id 1
+    user_id 1
     sign_time "#{Time.zone.now}"
   end
 end
