@@ -1,4 +1,4 @@
-json.array!(@signs) do |sign|
-  json.extract! sign, :id, :training_course_id, :school_id, :user_id, :sign_time
-  json.url sign_url(sign, format: :json)
-end
+json.current_page @signs.current_page
+json.total_pages @signs.total_pages
+
+json.signs @signs, partial: 'signs/sign', as: :sign
