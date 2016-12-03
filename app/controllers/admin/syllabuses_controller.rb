@@ -1,10 +1,12 @@
-class Admin::SyllabusesController < ApplicationController
-  before_action :set_admin_syllabus, only: [:show, :edit, :update, :destroy]
+class SyllabusesController < ApplicationController
+  before_action :set_admin_syllabus, only: [:show, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
-    @admin_syllabuses = Admin::Syllabus.all
+    page = params[:page] || 1
+    per_page = params[:per_page] || 5
+    @admin_syllabuses = Syllabus.all.paginate(page: page, per_page:per_page)
     respond_with(@admin_syllabuses)
   end
 
@@ -12,18 +14,14 @@ class Admin::SyllabusesController < ApplicationController
     respond_with(@admin_syllabus)
   end
 
-  def new
-    @admin_syllabus = Admin::Syllabus.new
-    respond_with(@admin_syllabus)
-  end
-
-  def edit
-  end
-
   def create
-    @admin_syllabus = Admin::Syllabus.new(admin_syllabus_params)
-    @admin_syllabus.save
-    respond_with(@admin_syllabus)
+    @admin_syllabus = Syllabus.new(syllabus_params)
+    if @admin_syllabus.save
+      respond_with(@admin_syllabus)
+    else
+      @error = "课程表创建失败 ！"
+      respond_with(@error)
+    end
   end
 
   def update
@@ -38,10 +36,10 @@ class Admin::SyllabusesController < ApplicationController
 
   private
     def set_admin_syllabus
-      @admin_syllabus = Admin::Syllabus.find(params[:id])
+      @admin_syllabus = Syllabus.find(params[:id])
     end
 
     def admin_syllabus_params
-      params[:admin_syllabus]
+     params.require(:syllabus).permit(:training_course_id, :school_id, :course_time, :title, :content)
     end
 end
