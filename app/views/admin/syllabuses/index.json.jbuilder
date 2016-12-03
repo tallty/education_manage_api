@@ -1,4 +1,4 @@
-json.array!(@admin_syllabuses) do |admin_syllabus|
-  json.extract! admin_syllabus, :id
-  json.url admin_syllabus_url(admin_syllabus, format: :json)
-end
+json.current_page @admin_syllabuses.current_page
+json.total_pages @admin_syllabuses.total_pages
+
+json.admin_syllabuses @admin_syllabuses, partial: 'admin/syllabuses/admin_syllabus', as: :admin_syllabus

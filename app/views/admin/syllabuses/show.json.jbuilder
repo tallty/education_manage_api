@@ -1,1 +1,1 @@
-json.extract! @admin_syllabus, :id, :created_at, :updated_at
+json.partial! 'admin/syllabuses/admin_syllabus', admin_syllabus: @admin_syllabus
