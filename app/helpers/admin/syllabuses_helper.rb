@@ -1,0 +1,2 @@
+module Admin::SyllabusesHelper
+end
