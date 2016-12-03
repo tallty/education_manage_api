@@ -34,7 +34,7 @@ class SyllabusesController < ApplicationController
   # PATCH/PUT /syllabuses/1.json
   def update
     @syllabus.update(syllabus_params)
-    respond_with(@syllabus) 
+    respond_with(@syllabus, template:"syllabuses/show", status: 201) 
   end
 
   # DELETE /syllabuses/1
