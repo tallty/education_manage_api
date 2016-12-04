@@ -28,4 +28,9 @@
 /solr/
 /vendor/*
 /config/database.yml
+/.swm
+/.swn
+/.swp
+/.swo
+
 
