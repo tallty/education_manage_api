@@ -30,6 +30,11 @@ module OnlineTrain
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    ################ngin #########
+    config.action_controller.asset_host = 'http://114.55.172.35/trains/'
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    ##########################
+
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/**/)
   end
 end
