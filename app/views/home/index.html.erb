@@ -6,28 +6,24 @@
 		  	<div class="panel panel-default half-width pull-left">
 					<div class="panel-heading oh text-center">
 				      <span class="active-title">专业负责人培训通知</span>
-				      <%= link_to "更多", notifications_path(category: 2), class: "pull-right active-link" %>
+				      <%= link_to "更多", notifications_url(category: 2), class: "pull-right active-link" %>
 				    </div>
 					<div class="panel-body">
 					  <%=  render partial: "notification", locals: {notifications: @profession_notifications}%>
 					</div>
 			</div>
-			
-	    </div>
-
-        <div class="panel-body bordered">
-		  	
-			<div class="panel panel-default half-width pull-left">
+			<div class="panel panel-default half-width pull-right">
 				  <div class="panel-heading oh text-center">
 				  	<span class="active-title">专业负责人培训报名</span>
-				    <%= link_to "更多", training_courses_path(category: 2), class: "pull-left active-link" %>
+				    <%= link_to "更多", training_courses_url(category: 2), class: "pull-right active-link" %>
 				  </div>
 				  <div class="panel-body">
 				    <%=  render partial: "training_course", locals: {training_courses: @profession_training_courses}%>
 				  </div>
 	        </div>
 	    </div>
-
+			
+	    </div>
 	  </div>
   </div>
 </div>
@@ -40,7 +36,7 @@
 		  	<div class="panel panel-default half-width pull-left">
 					<div class="panel-heading text-center oh">
 				      <span class="active-title">骨干教师培训通知</span>
-				      <%= link_to "更多", notifications_path(category: 1), class: "pull-right active-link" %>
+				      <%= link_to "更多", notifications_url(category: 1), class: "pull-right active-link" %>
 				    </div>
 					<div class="panel-body">
 					  <%=  render partial: "notification", locals: {notifications: @teacher_notifications}%>
@@ -49,7 +45,7 @@
 			  <div class="panel panel-default half-width pull-right">
 				  <div class="panel-heading text-center oh">
 				  	<span class="active-title">骨干教师培训报名</span>
-				    <%= link_to "更多", training_courses_path(category: 1), class: "pull-right active-link" %>
+				    <%= link_to "更多", training_courses_url(category: 1), class: "pull-right active-link" %>
 				  </div>
 				  <div class="panel-body">
 				    <%=  render partial: "training_course", locals: {training_courses: @teacher_training_courses}%>
