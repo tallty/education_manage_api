@@ -5,13 +5,13 @@ resource "学员对 课程表 相关的API" do
 
   ############### before_do ################################
   describe 'syllabus condition is all correct' do
-    # user_attrs = FactoryGirl.attributes_for(:user)
+    user_attrs = FactoryGirl.attributes_for(:user)
 
-    # header "X-User-Token", user_attrs[:authentication_token]
-    # header "X-User-Email", user_attrs[:email]
+    header "X-User-Token", user_attrs[:authentication_token]
+    header "X-User-Email", user_attrs[:email]
 
     before do
-      # @user = create(:user)
+      @user = create(:user)
       # @school = create(:school)
       @syllabuses = create_list(:syllabus, 5, course_time: Time.zone.now)
     end

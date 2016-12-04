@@ -5,11 +5,11 @@ resource "学员 签到 相关的API" do
 
   #################### create #############################
   post '/signs' do
-    # user_attrs = FactoryGirl.attributes_for(:user)
+    user_attrs = FactoryGirl.attributes_for(:user)
     sign_attrs = FactoryGirl.attributes_for(:sign)
 
-    # header "X-User-Token", user_attrs[:authentication_token]
-    # header "X-User-Email", user_attrs[:email]
+    header "X-User-Token", user_attrs[:authentication_token]
+    header "X-User-Email", user_attrs[:email]
     parameter :user_id, "签到的学员",required: true, scope: :sign
     parameter :training_course_id, "学员签到的 项目",required: true, scope: :sign
     parameter :school_id, "学员签到的 学校",required: true, scope: :sign
@@ -23,7 +23,7 @@ resource "学员 签到 相关的API" do
     let(:syllabus_id) {sign_attrs[:syllabus_id]}
 
     before do
-      # @user = create(:user)
+      @user = create(:user)
       # @school = create(:school)
       # @training_course = create(:training_course)
     end
@@ -37,12 +37,13 @@ resource "学员 签到 相关的API" do
 
   ############### before_do ################################
   describe 'sign condition is all correct' do
-    # user_attrs = FactoryGirl.attributes_for(:user)
+    user_attrs = FactoryGirl.attributes_for(:user)
 
-    # header "X-User-Token", user_attrs[:authentication_token]
-    # header "X-User-Email", user_attrs[:email]
+    header "X-User-Token", user_attrs[:authentication_token]
+    header "X-User-Email", user_attrs[:email]
 
     before do
+      @user = create(:user)
       # @school = create(:school)
       @signs = create_list(:sign, 5, sign_time: Time.zone.now)
     end
