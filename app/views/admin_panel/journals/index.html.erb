@@ -21,10 +21,10 @@
           <tr>
             <td><%= journal.created_at.strftime("%Y-%m-%d %H:%M")%></td>
             <td><%= journal.try(:user).try(:name)%></td>
-            <td><%= link_to truncate(journal.try(:training_course).try(:name), length: 30), admin_panel_notification_training_course_path(journal.training_course.notification, journal.training_course), title: journal.try(:training_course).try(:name)%></td>
+            <td><%= link_to truncate(journal.try(:training_course).try(:name), length: 30), admin_panel_notification_training_course_url(journal.training_course.notification, journal.training_course), title: journal.try(:training_course).try(:name)%></td>
             <td><%= truncate(journal.content, length: 30)%></td>
 
-            <td><%= link_to "查看", admin_panel_user_training_course_journal_path(@user_training_course, journal) %></td>
+            <td><%= link_to "查看", admin_panel_user_training_course_journal_url(@user_training_course, journal) %></td>
           </tr>
           <% end %>
         </tbody>

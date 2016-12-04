@@ -2,11 +2,11 @@
   <div class="col-sm-2 listLeft">
     <ul class="list-group">
       <% @material_dates.each do |material| %>
-        <li class="list-group-item text-center" style="padding: 5px 15px;"><%= link_to material.mdate + "年", list_materials_path(date: material.mdate), class: "center-block" %></li>
+        <li class="list-group-item text-center" style="padding: 5px 15px;"><%= link_to material.mdate + "年", list_materials_url(date: material.mdate), class: "center-block" %></li>
       <% end %>
     </ul>
   </div>
-  <div class="col-sm-10">
+  <div class="col-sm-10"> 
     <div class="col-sm-12 news-show-content">
       <div class="col-sm-12 report-show-title">
         <div class="col-sm-2" style="padding-top: 4px;">培养方案</div>
@@ -18,12 +18,12 @@
           <% @materials.each do |material| %>
             <div class="col-sm-12 news-list">
                <%=image_tag "h_news_icon.gif", class: "news_icon" %>
-               <%= link_to "#{material.title}", download_material_path(material) %>&nbsp;
+               <%= link_to "#{material.title}", download_material_url(material) %>&nbsp;
                <%=image_tag "news_t.png" %><span class="pull-right news-time">
-               <%= link_to download_material_path(material), style: "margin-right: 10px;" do %>
+               <%= link_to download_material_url(material), style: "margin-right: 10px;" do %>
                  <span class="glyphicon glyphicon-download"></span> 下载
                <% end -%>
-               <%= link_to pdfjs.full_path(file: material.attachment.avatar.url), style: "margin-right: 30px;" do %>
+               <%= link_to pdfjs.full_url(file: material.attachment.avatar.url), style: "margin-right: 30px;" do %>
                  <span class="glyphicon glyphicon-eye-open"></span> 预览
                <% end -%>
                <%= material.mdate %>&nbsp;</span>

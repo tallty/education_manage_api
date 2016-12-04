@@ -6,7 +6,7 @@
         <h4 class="modal-title">添加管理部门</h4>
       </div>
       <div id="adminForm" class="modal-body">
-        <%= simple_form_for(@admin, url: is_edit_or_update? ? admin_panel_admin_path(@admin) : admin_panel_admins_path(@admin),remote: true, wrapper: :horizontal_form, html: {class: "form-horizontal"}) do |f| %>
+        <%= simple_form_for(@admin, url: is_edit_or_update? ? admin_panel_admin_url(@admin) : admin_panel_admins_url(@admin),remote: true, wrapper: :horizontal_form, html: {class: "form-horizontal"}) do |f| %>
           <%= f.input :username, required: true, autofocus: true, disabled: is_edit_or_update? ? true : false %>
           <%= f.input :province, required: true,input_html: { value: @admin.try(:adminable).try(:name) } , disabled: is_edit_or_update? ? true : false %>
           <%= f.input :password, required: true  %>

@@ -3,7 +3,7 @@
 <% else %>
   <% @notifications = @all_notifications %>
 <% end %>
-<div class="wrapper">
+<div class="wrapper"> 
 	<div class="row">
 		<div class="col-md-12">
 			<div class="content">
@@ -14,7 +14,7 @@
 					<ul class="nav nav-stacked notice-index">
 					  <% @notifications.each do |notification|%>
 							<li role="presentation">
-								<a href="<%= notification_path(notification) %>">
+								<a href="<%= notification_url(notification) %>">
 									<div class="row notice-index">
 										<div class="col-xs-10"><span><%= image_tag "notice_index_icon.png"%></span><%= notification.try(:title)%></div>
 										<div class="col-xs-2 text-right font-red"><%= notification.created_at.strftime("%Y-%m-%d")%></div>

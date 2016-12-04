@@ -4,13 +4,13 @@
 		<div class="row">
 			<div class="col-xs-6">
 				<div class="events-list col-xs-12">新闻动态
-		      <%= link_to "更多>>", list_reports_path(classify: 2), class: 'more pull-right'%>
+		      <%= link_to "更多>>", list_reports_url(classify: 2), class: 'more pull-right'%>
 				</div>
 				<% @headlines.each do |event| %>
-					<%=link_to event_path(event) do %>
+					<%=link_to event_url(event) do %>
 						<div class="col-xs-12 news-list">
 						  <%=image_tag "h_news_icon.gif", class: "news_icon" %>
-						  <%= link_to truncate(event.title, length: 26), event_path(event) %>&nbsp;
+						  <%= link_to truncate(event.title, length: 26), event_url(event) %>&nbsp;
 						  <% if event_in_two_weeks(event) %>
 						    <%=image_tag "news_t.png" %>
 						  <% end %>
@@ -22,13 +22,13 @@
 			</div>
 			<div class="col-xs-6">
 				<div class="events-list col-xs-12">通知公告
-		      <%= link_to "更多>>", list_reports_path(classify: 1), class: 'more pull-right'%>
+		      <%= link_to "更多>>", list_reports_url(classify: 1), class: 'more pull-right'%>
 				</div>
 				<% @bulletins.each do |event| %>
-					<%=link_to event_path(event) do %>
+					<%=link_to event_url(event) do %>
 						<div class="col-xs-12 news-list">
 						  <%=image_tag "h_news_icon.gif", class: "news_icon" %>
-						  <%= link_to truncate(event.title, length: 26), event_path(event) %>&nbsp;
+						  <%= link_to truncate(event.title, length: 26), event_url(event) %>&nbsp;
 						  <% if event_in_two_weeks(event) %>
 						    <%=image_tag "news_t.png" %>
 						  <% end %>

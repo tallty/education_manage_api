@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="wrapper">
+  <div class="wrapper"> 
     <div class="row">
       <div class="personal_center right_message_tab col-md-3">
         <%= render "personal_nav"%>
@@ -8,7 +8,7 @@
         <div class="personal_center_content right-nav-tab">
           <strong class="col-md-3 right_message_tab"><span>我的日志</span></strong><br/><br/>
           <div id="addJournal" class="add-journal pull-right">
-            <%= link_to new_journal_path, remote: true do %>
+            <%= link_to new_journal_url, remote: true do %>
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加日志
             <% end %>
           </div>
@@ -27,7 +27,7 @@
                 <td><%= raw journal.content %></td>
                 <td><%= journal.try(:created_at).strftime("%Y-%m-%d %H:%M") %></td>
                 <td>
-                  <%= link_to "编辑", edit_journal_path(journal), remote: true, class: "text-danger"%>
+                  <%= link_to "编辑", edit_journal_url(journal), remote: true, class: "text-danger"%>
                 </td>
               </tr>
             <% end %>

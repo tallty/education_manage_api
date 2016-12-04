@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="wrapper">
+  <div class="wrapper"> 
     <div class="row">
       <div class="personal_center right_message_tab col-md-3">
         <%= render "personal_nav"%>
@@ -32,22 +32,22 @@
                             <% user_task = current_user.get_user_task_by_task task%>
                             <tr>
                               <td>
-                                <%= link_to(task.title, user_task_path(task), format: :js, remote: true) %>
+                                <%= link_to(task.title, user_task_url(task), format: :js, remote: true) %>
                               </td>
                               <td><%= user_task.present? ? user_task.comment_result : "暂无" %></td>
                               <td><%= task.created_at.strftime("%F")%></td>
                               <td class="text-left">
                                 <% if user_task.present? %>
                                   <% if user_task.try(:attachment).present? %>&nbsp;[作业附件]
-                                    <%= link_to(truncate(user_task.try(:attachment).try(:avatar_file_name), length: 18), download_user_task_path(user_task), title: user_task.try(:attachment).try(:avatar_file_name) ) %>
-                                    <%= link_to("[修改/查看]", edit_user_task_path(user_task,task_id: task.id), class: "text-muted", format: :js, remote: true) %>
+                                    <%= link_to(truncate(user_task.try(:attachment).try(:avatar_file_name), length: 18), download_user_task_url(user_task), title: user_task.try(:attachment).try(:avatar_file_name) ) %>
+                                    <%= link_to("[修改/查看]", edit_user_task_url(user_task,task_id: task.id), class: "text-muted", format: :js, remote: true) %>
                                   <% end %>
                                 <% else %>
                                   <div class="text-center">
                                     <% if user_training_course.try(:training_course).try(:task_end_time) && Time.now > user_training_course.try(:training_course).try(:task_end_time) %>
                                       <%= link_to "提交", "javascript:void(0);", onclick: "alert('已超过提交作业截止时间!')" %>
                                     <% else %>
-                                      <%= link_to "提交", new_user_task_path(task_id: task.id), remote: true, format: :js %>
+                                      <%= link_to "提交", new_user_task_url(task_id: task.id), remote: true, format: :js %>
                                     <% end %>
                                   </div>
                                 <% end %>

@@ -1,6 +1,6 @@
 <div class="wrapper">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12"> 
 			<div class="content">
 				<div class="right-head">
 					<div class="col-xs-2 text-center"><strong>培训通知</strong></div>
@@ -24,9 +24,9 @@
 						</ul>
 						<%= raw @notification.try(:content) %>
 					</div>
-					<div class="text-left" style="margin-top: 20px; text-indent: 14px;">附件下载：<%= link_to @notification.try(:attachment).try(:avatar_file_name),download_notification_path(@notification)%></div>
+					<div class="text-left" style="margin-top: 20px; text-indent: 14px;">附件下载：<%= link_to @notification.try(:attachment).try(:avatar_file_name),download_notification_url(@notification)%></div>
 					<div class="text-center" style="margin-top: 30px">
-						<%= link_to "我要报名", training_course_path(@notification.training_course), class: "btn btn-primary apply-btn"%>
+						<%= link_to "我要报名", training_course_url(@notification.training_course), class: "btn btn-primary apply-btn"%>
 					</div>
 				</div>
 			</div>

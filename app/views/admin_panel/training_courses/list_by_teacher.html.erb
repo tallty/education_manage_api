@@ -24,7 +24,7 @@
 	    	  <% @training_courses.each do |training_course| %>
 					  <tr class="tr-default-bg">
 							<td class="text-center"><%= TrainingCourse::ListCategory[training_course.category.to_sym] %></td>
-							<td class="text-center"><%= link_to truncate(training_course.try(:name), length: 15), detail_admin_panel_training_course_path(training_course.id), 'data-toggle': "tooltip", 'data-placement': "top", title: training_course.try(:name), target: "_blank" %></td>
+							<td class="text-center"><%= link_to truncate(training_course.try(:name), length: 15), detail_admin_panel_training_course_url(training_course.id), 'data-toggle': "tooltip", 'data-placement': "top", title: training_course.try(:name), target: "_blank" %></td>
 							<td class="text-center"><%= training_course.try(:school).try(:name) %></td>
 							<td class="text-center">
 							  <%= training_course.start_time.try(:strftime, "%F")%> ~
@@ -33,22 +33,22 @@
 							<td class="text-center"><%= training_course.plan_number %></td>
 							<td class="text-center"><%= training_course.be_applied ? content_tag(:div, "是", class: "btn btn-xs btn-success") : content_tag(:div, "否", class: "btn btn-xs btn-danger") %></td>
 							<td class="text-center">
-						  	<%= link_to admin_panel_training_course_user_training_courses_path(training_course), title: '报名人员列表' do %>
+						  	<%= link_to admin_panel_training_course_user_training_courses_url(training_course), title: '报名人员列表' do %>
 						      <span class="glyphicon glyphicon-user"></span>
 						    <% end %>
 						  </td>
 						  <td class="text-center">
-						  	<%= link_to detail_admin_panel_training_course_path(training_course), class: "btn btn-xs btn-primary", title: '查看' do %>
+						  	<%= link_to detail_admin_panel_training_course_url(training_course), class: "btn btn-xs btn-primary", title: '查看' do %>
 						      <span class="glyphicon glyphicon-eye-open"></span> 查看
 						    <% end %>
 						  </td>
 						  <td class="text-center">
-						  	<%= link_to new_admin_panel_training_course_manager_feedback_path(training_course), class: "btn btn-xs btn-primary", title: '查看' do %>
+						  	<%= link_to new_admin_panel_training_course_manager_feedback_url(training_course), class: "btn btn-xs btn-primary", title: '查看' do %>
 						      <span class="glyphicon glyphicon-envelope"></span> 反馈
 						    <% end %>
 						  </td>
 						  <td class="text-center">
-						  	<%= link_to admin_panel_training_course_course_resources_path(training_course), class: "btn btn-xs btn-primary", title: '课程附件' do %>
+						  	<%= link_to admin_panel_training_course_course_resources_url(training_course), class: "btn btn-xs btn-primary", title: '课程附件' do %>
 						      <span class="glyphicon glyphicon-th-list"></span> 课程附件
 						    <% end %>
 						  </td>

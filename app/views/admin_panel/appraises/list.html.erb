@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
   <li>
-    <%= link_to "后台", admin_panel_root_path  %>
+    <%= link_to "后台", admin_panel_root_url  %>
   </li>
   <li class="active" >
     培训班级
@@ -16,7 +16,7 @@
       <h3 class="panel-title">搜索栏</h3>
     </div>
     <div class="panel-body">
-      <%= form_tag list_admin_panel_appraises_path, method: :get do %>
+      <%= form_tag list_admin_panel_appraises_url, method: :get do %>
         <div class="col-sm-3">
           <div class="form-group">
            <%= text_field_tag :keyword, nil, class: "form-control", placeholder: '请输入关键字' %>

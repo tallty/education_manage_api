@@ -1,18 +1,18 @@
 <li class="<%= current_page?(controller: 'admin_panel/tasks', action: 'list') ? 'active' : ''%>">
-  <%= link_to("培训作业", list_admin_panel_tasks_path ) %>
+  <%= link_to("培训作业", list_admin_panel_tasks_url ) %>
 </li>
 <li class="<%= current_page?(controller: 'admin_panel/user_tasks', action: 'list') ? 'active' : ''%>">
-  <%= link_to("学员作业", list_admin_panel_user_tasks_path ) %>
+  <%= link_to("学员作业", list_admin_panel_user_tasks_url ) %>
 </li>
 <li class="<%= current_page?(controller: 'admin_panel/journals', action: 'list') ? 'active' : ''%>">
-  <%= link_to("日志提交", list_admin_panel_journals_path ) %>
+  <%= link_to("日志提交", list_admin_panel_journals_url ) %>
 </li>
 <li class="<%= current_page?(controller: 'admin_panel/student_feedbacks', action: 'list') ? 'active' : ''%>">
-  <%= link_to("学员反馈", list_admin_panel_student_feedbacks_path ) %>
+  <%= link_to("学员反馈", list_admin_panel_student_feedbacks_url ) %>
 </li>
 <li class="<%= current_page?(controller: 'admin_panel/appraises', action: 'list') ? 'active' : ''%>">
-  <%= link_to("学员评师", list_admin_panel_appraises_path ) %>
+  <%= link_to("学员评师", list_admin_panel_appraises_url ) %>
 </li>
 <li class="<%= current_page?(controller: 'admin_panel/manager_feedbacks', action: 'list') ? 'active' : ''%>">
-  <%= link_to("负责人反馈", list_admin_panel_manager_feedbacks_path ) %>
+  <%= link_to("负责人反馈", list_admin_panel_manager_feedbacks_url ) %>
 </li>

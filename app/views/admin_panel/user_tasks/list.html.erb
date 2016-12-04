@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
   <li>
-    <%= link_to "后台", admin_panel_root_path  %>
+    <%= link_to "后台", admin_panel_root_url  %>
   </li>
   <li class="active" >
     培训班级
@@ -16,7 +16,7 @@
       <h3 class="panel-title">搜索栏</h3>
     </div>
     <div class="panel-body">
-      <%= form_tag list_admin_panel_user_tasks_path, method: :get do %>
+      <%= form_tag list_admin_panel_user_tasks_url, method: :get do %>
         <div class="col-sm-3">
           <div class="form-group">
            <%= text_field_tag :keyword, nil, class: "form-control", placeholder: '请输入关键字' %>
@@ -55,10 +55,10 @@
             <td><%= user_task.try(:user).name %></td>
             <td><%= user_task.try(:user).email %><br><%= user_task.try(:user).phone %></td>
             <td><%= user_task.title %></td>
-            <td><%= link_to(truncate(user_task.try(:attachment).try(:avatar_file_name), length: 30), download_admin_panel_task_user_task_path(user_task.task, user_task), title: user_task.try(:attachment).try(:avatar_file_name) ) %></td>
+            <td><%= link_to(truncate(user_task.try(:attachment).try(:avatar_file_name), length: 30), download_admin_panel_task_user_task_url(user_task.task, user_task), title: user_task.try(:attachment).try(:avatar_file_name) ) %></td>
             <td><%= user_task.created_at.strftime("%Y-%m-%d %H:%M") %></td>
             <td>已完成</td>
-            <td><%= link_to "查看", admin_panel_user_task_path(user_task)%></td>
+            <td><%= link_to "查看", admin_panel_user_task_url(user_task)%></td>
           </tr>
           <% end %>
         </tbody>

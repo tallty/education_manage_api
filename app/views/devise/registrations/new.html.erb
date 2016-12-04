@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :horizontal_form, html: {class: "form-horizontal"}) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_url(resource_name), wrapper: :horizontal_form, html: {class: "form-horizontal"}) do |f| %>
     <%= f.error_notification %>
     <div class="panel-list">
         <div class="panel panel-default half-width pull-left">
@@ -58,6 +58,6 @@
           </div>
         </div>
 
-    </div>
+    </div> 
   <% end %>
 </div>

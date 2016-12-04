@@ -24,7 +24,7 @@
 	      <tr>
 	      	<th class="col-sm-1">附件下载</th>
 	      	<td>
-	      		<%= link_to(truncate(@user_task.try(:attachment).try(:avatar_file_name), length: 30), download_admin_panel_task_user_task_path(@user_task.task, @user_task), title: @user_task.try(:attachment).try(:avatar_file_name) ) %>
+	      		<%= link_to(truncate(@user_task.try(:attachment).try(:avatar_file_name), length: 30), download_admin_panel_task_user_task_url(@user_task.task, @user_task), title: @user_task.try(:attachment).try(:avatar_file_name) ) %>
 	      	</td>
 	      </tr>
 	    </table>

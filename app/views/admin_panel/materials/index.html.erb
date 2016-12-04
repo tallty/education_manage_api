@@ -1,9 +1,9 @@
 <ol class="breadcrumb">
   <li>
-    <%= link_to "后台", admin_panel_root_path  %>
+    <%= link_to "后台", admin_panel_root_url  %>
   </li>
   <li>
-    <%= link_to "培训资料", admin_panel_materials_path %>
+    <%= link_to "培训资料", admin_panel_materials_url %>
   </li>
   <li class="active">列表</li>
 </ol>
@@ -12,7 +12,7 @@
   <div class="panel panel-default">
     <div class="panel-heading panel-active" style="overflow: hidden;">
       <span class="pull-left">培训资料</span>
-      <%= link_to new_admin_panel_material_path, class: "btn btn-xs pull-right btn-active", 'data-no-turbolink' => true do %>
+      <%= link_to new_admin_panel_material_url, class: "btn btn-xs pull-right btn-active", 'data-no-turbolink' => true do %>
          <span class="glyphicon glyphicon-plus-sign"></span> 新建
       <% end %>
     </div>
@@ -35,14 +35,14 @@
               <td class="text-center"><%= material.mdate %></td>
               <td>
                 <% if material.try(:attachment).present? %>
-                  <%= link_to(material.try(:attachment).try(:avatar_file_name), download_admin_panel_material_path(material)) %>
+                  <%= link_to(material.try(:attachment).try(:avatar_file_name), download_admin_panel_material_url(material)) %>
                 <% end %>
               </td>
               <td class="text-center">
-                <%= link_to "修改", edit_admin_panel_material_path(material), 'data-no-turbolink' => true %>
+                <%= link_to "修改", edit_admin_panel_material_url(material), 'data-no-turbolink' => true %>
               </td>
               <td class="text-center">
-                <%= link_to '删除', admin_panel_material_path(material), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to '删除', admin_panel_material_url(material), method: :delete, data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
           <% end %>

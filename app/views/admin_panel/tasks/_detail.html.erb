@@ -9,7 +9,7 @@
         <table class="table">
           <tr>
             <th width="20%">培训班</th>
-            <td><%= link_to(@task.try(:training_course).try(:name), admin_panel_training_course_path(@task.training_course_id) )%></td>
+            <td><%= link_to(@task.try(:training_course).try(:name), admin_panel_training_course_url(@task.training_course_id) )%></td>
           </tr>
           <tr>
             <th>标题</th>
@@ -22,7 +22,7 @@
           <tr>
             <th>附件下载</th>
             <td><% if @task.try(:attachment).present? %>
-                <%= link_to(@task.try(:attachment).try(:avatar_file_name), download_admin_panel_task_path(@task)) %>
+                <%= link_to(@task.try(:attachment).try(:avatar_file_name), download_admin_panel_task_url(@task)) %>
               <% end %></td>
           </tr>
         </table>

@@ -2,7 +2,7 @@
 	<div class="panel panel-default">
 	  <div class="panel-heading panel-active">搜索栏</div>
 	  <div class="panel-body panel-default-bg">
-	    <%= form_tag list_admin_panel_admin_user_tasks_path, method: :get do %>
+	    <%= form_tag list_admin_panel_admin_user_tasks_url, method: :get do %>
 	      <%= text_field_tag :keyword%>
 	      <%= submit_tag "搜索"%>
 	    <% end %>
@@ -32,9 +32,9 @@
 							<td class="text-center"><%= admin_user_task.try(:user_task).try(:title) %></td>
 							<td class="text-center"><%= admin_user_task.try(:user_task).try(:user).try(:name) %></td>
 							<td>
-							  <%= link_to(truncate(admin_user_task.user_task.try(:attachment).try(:avatar_file_name), length: 15), download_user_task_path(admin_user_task.user_task), title: admin_user_task.try(:user_task).try(:attachment).try(:avatar_file_name)) if admin_user_task.user_task %>
+							  <%= link_to(truncate(admin_user_task.user_task.try(:attachment).try(:avatar_file_name), length: 15), download_user_task_url(admin_user_task.user_task), title: admin_user_task.try(:user_task).try(:attachment).try(:avatar_file_name)) if admin_user_task.user_task %>
 						  </td>
-						  <td class="text-center"><%= link_to "添加评审", edit_admin_panel_admin_user_task_path(admin_user_task), 'data-no-turbolink' => true %></td>
+						  <td class="text-center"><%= link_to "添加评审", edit_admin_panel_admin_user_task_url(admin_user_task), 'data-no-turbolink' => true %></td>
 						</tr>
 	    	  <% end %>
 	    	</tbody>

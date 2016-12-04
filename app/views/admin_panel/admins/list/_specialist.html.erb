@@ -1,7 +1,7 @@
 <% if can? :new, Admin %>
   <div class="row">
     <div id="addJournal" class="add-btn pull-right">
-      <%= link_to(new_admin_panel_admin_path(role: "specialist"),remote: true, format: :js) do %>
+      <%= link_to(new_admin_panel_admin_url(role: "specialist"),remote: true, format: :js) do %>
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 评审专家
       <% end %>
     </div>
@@ -33,8 +33,8 @@
       <td><%= admin.last_sign_in_ip %></td>
       <% if can? [:edit, :destroy], Admin%>
         <td>
-          <%= link_to("编辑",edit_admin_panel_admin_path(admin, role: params[:role]),remote: true, format: :js)  %>
-          <%= link_to("删除", admin_panel_admin_path(admin, role: params[:role]) , method: :delete, data: {confirm: "确定要删除当前用户？"}) %>
+          <%= link_to("编辑",edit_admin_panel_admin_url(admin, role: params[:role]),remote: true, format: :js)  %>
+          <%= link_to("删除", admin_panel_admin_url(admin, role: params[:role]) , method: :delete, data: {confirm: "确定要删除当前用户？"}) %>
         </td>
       <% end %>
     </tr>

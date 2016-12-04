@@ -1,6 +1,6 @@
 <!-- 培训机构 -->
 <div class="panel-body js-panel-toggle">
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: session_url(resource_name)) do |f| %>
   <% flash.each do |key, value| %>
     <% if value.present? %>
         <p class="text-danger"><%= value%></p>

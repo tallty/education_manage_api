@@ -1,7 +1,7 @@
 <% if params[:category] %>
   <% @training_courses = @search_training_courses %>
 <% else %>
-  <% @training_courses = @all_training_courses %>
+  <% @training_courses = @all_training_courses %> 
 <% end %>
 
 <div class="wrapper">
@@ -12,7 +12,7 @@
 					<div class="">
 						<div class="col-xs-2 text-center"><strong>培训报名</strong></div>
 						<div class="col-xs-10">
-							<%= form_tag training_courses_path, class: "form-inline text-right", method: :get do %>
+							<%= form_tag training_courses_url, class: "form-inline text-right", method: :get do %>
 								<!-- <div class="form-group dropdown">
 									<button class="btn btn-default head-btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 										培训计划 <span class="caret"></span>
@@ -79,7 +79,7 @@
 								  <% @training_courses.each do |training_course|%>
 										<tr>
 											<td scope="row"><%= training_course.created_at.strftime("%Y")%></td>
-											<td><%= link_to training_course.name, training_course_path(training_course.id) %></td>
+											<td><%= link_to training_course.name, training_course_url(training_course.id) %></td>
 											<td><%= training_course.try(:school).try(:name) %></td>
 											<td><%= training_course.try(:training_address) %></td>
 											<td><%= training_course.try(:start_time).strftime("%Y-%m-%d") %><br><%= training_course.try(:end_time).strftime("%Y-%m-%d")%></td>
@@ -89,7 +89,7 @@
 												<% if training_course.category.try(:include?, "国培") %>
 													<%= link_to "报名", "http://www.hvett.com.cn/index.php?action=page&pid=7",target: "_blank"  %>
 												<% else %>
-													<%= link_to "报名", training_course_path(training_course.id) %>
+													<%= link_to "报名", training_course_url(training_course.id) %>
 												<% end %>
 											</td>
 										</tr>

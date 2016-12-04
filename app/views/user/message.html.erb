@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="wrapper">
-    <div class="row">
+    <div class="row"> 
       <div class="personal_center right_message_tab col-md-3">
         <%= render "personal_nav"%>
       </div>
@@ -28,13 +28,13 @@
                 <td><%= message.created_at.strftime("%F") %><br><%= message.created_at.strftime("%H:%M") %></td>
                 <td class="text-info">
                   <% if message.message_by_user.status == "unread" %>
-                    <%= link_to(UserMessage::Status[(message.message_by_user).status.to_sym], read_user_message_path(message.message_by_user)) %>
+                    <%= link_to(UserMessage::Status[(message.message_by_user).status.to_sym], read_user_message_url(message.message_by_user)) %>
                   <% else %>
                     <%= UserMessage::Status[(message.message_by_user).status.to_sym] %>
                   <% end %>
                 </td>
                 <td>
-                  <%= link_to("删除", user_message_path(message.message_by_user), method: :delete, data: {confirm: '确认删除这条消息吗？'}) %>
+                  <%= link_to("删除", user_message_url(message.message_by_user), method: :delete, data: {confirm: '确认删除这条消息吗？'}) %>
                 </td>
               </tr>
               <% end %>

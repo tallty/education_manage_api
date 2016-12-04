@@ -1,12 +1,12 @@
 <ol class="breadcrumb">
   <li>
-    <%= link_to "后台", admin_panel_root_path  %>
+    <%= link_to "后台", admin_panel_root_url  %>
   </li>
   <li>
-    <%= link_to "通知列表", admin_panel_notifications_path %>
+    <%= link_to "通知列表", admin_panel_notifications_url %>
   </li>
    <li>
-    <%= link_to @training_course.name, admin_panel_notification_training_course_path(@notification, @training_course) %>
+    <%= link_to @training_course.name, admin_panel_notification_training_course_url(@notification, @training_course) %>
   </li>
   <li class="active">查看</li>
 </ol>
@@ -16,18 +16,18 @@
 	  <div class="panel-heading panel-active">
 	    <ul class="nav nav-pills nav-content-menu">
 			  <li role="presentation" class="<%= params[:controller]=='admin_panel/training_courses' ? 'active' : ''%>">
-			    <%= link_to admin_panel_notification_training_course_path(@notification, @training_course) do %>
+			    <%= link_to admin_panel_notification_training_course_url(@notification, @training_course) do %>
 	          <span>培训班信息</span>
 	        <% end %>
 			  </li>
 
 			  <li role="presentation">
-		      <%= link_to admin_panel_training_course_user_training_courses_path(@training_course) do %>
+		      <%= link_to admin_panel_training_course_user_training_courses_url(@training_course) do %>
             <span>培训班报名列表</span>
           <% end %>
         </li>
         <li role="presentation" class="<%= params[:controller]=='admin_panel/tasks' ? 'active' : ''%>">
-          <%= link_to admin_panel_training_course_tasks_path(@training_course) do %>
+          <%= link_to admin_panel_training_course_tasks_url(@training_course) do %>
            <span class="">布置作业列表</span>
           <% end %>
         </li>
@@ -36,10 +36,10 @@
 	  <div class="panel-body panel-default-bg">
 		  <div class="text-left">
 		    <% if can? :edit, @training_course %>
-		    	<%= link_to "修改", edit_admin_panel_notification_training_course_path(@notification, @training_course), class: 'btn btn-primary', 'data-no-turbolink' => true %>
+		    	<%= link_to "修改", edit_admin_panel_notification_training_course_url(@notification, @training_course), class: 'btn btn-primary', 'data-no-turbolink' => true %>
 		    <% end %>
-		    <%= link_to "联系信息", admin_panel_notification_training_course_path(@notification, @training_course, anchor: "well"), class: 'btn btn-primary'%>
-		    <%= link_to "导出", admin_panel_notification_training_course_path(@notification, @training_course, format: 'xls'), class: "btn btn-info pull-right"%>
+		    <%= link_to "联系信息", admin_panel_notification_training_course_url(@notification, @training_course, anchor: "well"), class: 'btn btn-primary'%>
+		    <%= link_to "导出", admin_panel_notification_training_course_url(@notification, @training_course, format: 'xls'), class: "btn btn-info pull-right"%>
 		  </div>
 		  <hr>
 	    <table class="table">

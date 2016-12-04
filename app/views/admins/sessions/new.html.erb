@@ -1,7 +1,7 @@
 <nav class="nav-bar">
   <div class="container-fluid">
     <div class="col-sm-9">
-      <%= link_to "上海高等职业教育师资公共培训统一管理平台", admin_panel_root_path, class: "name" %>
+      <%= link_to "上海高等职业教育师资公共培训统一管理平台", admin_panel_root_url, class: "name" %>
     </div>
   </div>
 </nav>
@@ -11,19 +11,19 @@
       <div class="panel-heading fix-panel">
         <ul class="text-center">
           <li>
-            <%= link_to "教育部门", new_session_path(:admin), class: (params[:role].blank? || params[:role] == "education") ? "active" : "" %>
+            <%= link_to "教育部门", new_session_url(:admin), class: (params[:role].blank? || params[:role] == "education") ? "active" : "" %>
           </li>
           <li>
-            <%= link_to "秘书处", new_session_path(:admin, role: :system), class: params[:role] == "system" ? "active" : "" %>
+            <%= link_to "秘书处", new_session_url(:admin, role: :system), class: params[:role] == "system" ? "active" : "" %>
           </li>
           <li>
-            <%= link_to "培训机构", new_session_path(:admin, role: :trainer), class: params[:role] == "trainer" ? "active" : "" %>
+            <%= link_to "培训机构", new_session_url(:admin, role: :trainer), class: params[:role] == "trainer" ? "active" : "" %>
           </li>
           <li>
-            <%= link_to "评审专家", new_session_path(:admin, role: :specialist), class: params[:role] == "specialist" ? "active" : "" %>
+            <%= link_to "评审专家", new_session_url(:admin, role: :specialist), class: params[:role] == "specialist" ? "active" : "" %>
           </li>
           <li>
-            <%= link_to "班级负责人", new_session_path(:admin, role: :management), class: params[:role] == "management" ? "active" : "" %>
+            <%= link_to "班级负责人", new_session_url(:admin, role: :management), class: params[:role] == "management" ? "active" : "" %>
           </li>
         </ul>
       </div>

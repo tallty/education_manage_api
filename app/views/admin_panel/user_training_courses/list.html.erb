@@ -1,9 +1,9 @@
 <ol class="breadcrumb">
   <li>
-    <%= link_to "后台", admin_panel_root_path  %>
+    <%= link_to "后台", admin_panel_root_url  %>
   </li>
   <li>
-    <%= link_to "报名列表", list_admin_panel_user_training_courses_path  %>
+    <%= link_to "报名列表", list_admin_panel_user_training_courses_url  %>
   </li>
   <li class="active"><%= params[:keyword].present? ? "搜索结果" : "全部"%></li>
 </ol>
@@ -14,7 +14,7 @@
       <h3 class="panel-title">搜索栏</h3>
     </div>
     <div class="panel-body">
-      <%= form_tag list_admin_panel_user_training_courses_path, method: :get do %>
+      <%= form_tag list_admin_panel_user_training_courses_url, method: :get do %>
         <div class="col-sm-3">
           <div class="form-group">
            <%= text_field_tag :keyword, nil, class: "form-control", placeholder: '请输入关键字' %>

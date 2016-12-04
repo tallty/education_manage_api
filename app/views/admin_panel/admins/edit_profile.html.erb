@@ -2,7 +2,7 @@
 	<div class="panel panel-default">
 	  <div class="panel-heading panel-active">基本信息</div>
 	  <div class="panel-body panel-default-bg">
-	    <%= form_for @admin, url: update_profile_admin_panel_admins_path, html: { class: 'form-horizontal' }, method: :post do |f|%>
+	    <%= form_for @admin, url: update_profile_admin_panel_admins_url, html: { class: 'form-horizontal' }, method: :post do |f|%>
 
     	  <div class="form-group">
     	  	<%= f.label :username, '账号', class: 'col-sm-1 control-label' %>
