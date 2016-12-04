@@ -34,5 +34,8 @@ FactoryGirl.define do
     email "admin@example.com"
     password "abcd.1234"
     authentication_token "qwertyuiop123"
+    username "管理老师"
+    mobile "02115215211"
+    phone "15215215211"
   end
 end
