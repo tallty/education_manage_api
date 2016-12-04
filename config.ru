@@ -2,5 +2,5 @@
 
 require ::File.expand_path('../config/environment', __FILE__)
 map '/trains' do
-	run Rails.applications
+  run Rails.applications
 end
