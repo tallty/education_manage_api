@@ -1,1 +1,0 @@
-json.partial! 'admin/syllabuses/admin_syllabus', admin_syllabus: @admin_syllabus

@@ -1,3 +1,0 @@
-$("#adminCreate").html("<%= escape_javascript(render "/admin_panel/admins/form/#{params[:role].present? ? params[:role] : "system"}") %>");
-$(".modal-backdrop").remove();
-$("#adminModalForm").modal('show');
