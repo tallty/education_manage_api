@@ -5,11 +5,11 @@ resource "管理员对 课程表 相关的API" do
 
   #################### create #############################
   post '/admin/syllabuses' do
-    # admin_attrs = FactoryGirl.attributes_for(:admin)
+    admin_attrs = FactoryGirl.attributes_for(:admin)
     syllabus_attrs = FactoryGirl.attributes_for(:syllabus)
 
-    # header "X-Admin-Token", admin_attrs[:authentication_token]
-    # header "X-Admin-Email", admin_attrs[:email]
+    header "X-Admin-Token", admin_attrs[:authentication_token]
+    header "X-Admin-Email", admin_attrs[:email]
     parameter :title, " 课程表 课程的标题",required: true, scope: :syllabus
     parameter :training_course_id, "课程表 课程 属于的项目",required: true, scope: :syllabus
     parameter :school_id, "课程表 课程属于的 学校",required: true, scope: :syllabus
@@ -23,7 +23,7 @@ resource "管理员对 课程表 相关的API" do
     let(:content) {syllabus_attrs[:content]}
 
     before do
-      # @admin = create(:admin)
+      @admin = create(:admin)
       # @school = create(:school)
       # @training_course = create(:training_course)
     end
@@ -37,13 +37,13 @@ resource "管理员对 课程表 相关的API" do
 
   ############### before_do ################################
   describe 'syllabus condition is all correct' do
-    # admin_attrs = FactoryGirl.attributes_for(:admin)
+    admin_attrs = FactoryGirl.attributes_for(:admin)
 
-    # header "X-Admin-Token", admin_attrs[:authentication_token]
-    # header "X-Admin-Email", admin_attrs[:email]
+    header "X-Admin-Token", admin_attrs[:authentication_token]
+    header "X-Admin-Email", admin_attrs[:email]
 
     before do
-      # @school = create(:school)
+      @admin = create(:admin)
       @admin_syllabuses = create_list(:syllabus, 5, course_time: Time.zone.now)
     end
 

@@ -5,13 +5,13 @@ resource "管理员 对学员签到 相关的API" do
 
   ############### before_do ################################
   describe 'admin_sign condition is all correct' do
-    # admin_attrs = FactoryGirl.attributes_for(:admin)
+    admin_attrs = FactoryGirl.attributes_for(:admin)
 
-    # header "X-Admin-Token", admin_attrs[:authentication_token]
-    # header "X-Admin-Email", admin_attrs[:email]
+    header "X-Admin-Token", admin_attrs[:authentication_token]
+    header "X-Admin-Email", admin_attrs[:email]
 
     before do
-      # @school = create(:school)
+      @admin = create(:admin)
       @admin_signs = create_list(:sign, 5, sign_time: Time.zone.now)
     end
 
