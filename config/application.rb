@@ -11,6 +11,16 @@ module OnlineTrain
     # Use the responders controller from the responders gem
     config.app_generators.scaffold_controller :responders_controller
 
+    ############# 二级路由 ################
+    config.to_prepare do
+      # Load application's model / class decorators
+      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
+      end
+    end
+
+    #############################
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -31,8 +41,14 @@ module OnlineTrain
     config.active_record.raise_in_transactional_callbacks = true
 
     ################ngin #########
-    config.action_controller.asset_host = 'http://114.55.172.35/trains/'
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    # config.action_controller.asset_host = 'http://114.55.172.35/trains/'
+    # config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.action_controller.asset_host = 'http://114.55.172.35'
+    config.assets.paths << Rails.root.join("app", "assets", "fonts", "/../app")
+
+    config.relative_url_root = "/trains"
+    config.action_controller.relative_url_root = "/trains"
+
     ##########################
 
     config.autoload_paths += %W(#{config.root}/lib #{config.root}/lib/**/)
