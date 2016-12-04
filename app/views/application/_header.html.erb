@@ -1,0 +1,41 @@
+<header>
+	<%= image_tag("top-bar-bg.png", class: 'main-header') %>
+	<nav class="wrapper navbar-custom">
+	  <span class="col-sm-8 col-md-8 col-xs-8">
+	  	<%= link_to home_index_path, class: "col-sm-2 col-md-2 col-xs-2 active" do %>
+        首页
+	  	<% end %>
+		  <%= link_to "项目申报", projects_path, class: "col-sm-2 col-md-2 col-xs-2"%>
+		  <%= link_to "培训通知", notifications_path, class: "col-sm-2 col-md-2 col-xs-2"%>
+		  <%= link_to "培训报名", training_courses_path, class: "col-sm-2 col-md-2 col-xs-2"%>
+		  <%= link_to "培训基地", training_bases_path, class: "col-sm-2 col-md-2 col-xs-2"%>
+		  <%= link_to "个人中心", course_user_index_path, class: "col-sm-2 col-md-2 col-xs-2"%>
+	  </span>
+	  <span class="col-sm-4 col-md-4 col-xs-4 login-content">
+	    <%= link_to new_admin_session_path do %>
+	      <span class="glyphicon glyphicon-cog"></span> 管理
+		  <% end %>
+		  <% if user_signed_in? %>
+			  <%= link_to destroy_session_path(:user), method: :delete do %>
+		      <span class="glyphicon glyphicon-log-out"></span> 退出
+			  <% end %>
+			  <%= link_to my_user_index_path do %>
+		      <span class="glyphicon glyphicon-user"></span> <%= current_user.name %>
+			  <% end %>
+		  <% else %>
+			  <%= link_to new_registration_path(:user) do %>
+		      <span class="glyphicon glyphicon-log-in"></span> 注册
+			  <% end %>
+		  	<%= link_to new_session_path(:user) do %>
+		      <span class="glyphicon glyphicon-user"></span> 登录
+			  <% end %>
+		  <% end %>
+	  </span>
+  </nav>
+</header>
+<script type="text/javascript">
+	$(function(){
+		$("header a").removeClass("active");
+		$("header a:eq(<%= get_menu_index %>)").addClass("active");
+	});
+</script>

@@ -1,0 +1,53 @@
+<nav class="nav-bar">
+  <div class="container-fluid">
+    <div class="col-sm-9">
+      <%= link_to "上海高等职业教育师资公共培训统一管理平台", admin_panel_root_path, class: "name" %>
+    </div>
+  </div>
+</nav>
+<div class="main-content">
+  <div class="col-sm-6 login-content">
+    <div class="panel panel-default">
+      <div class="panel-heading fix-panel">
+        <ul class="text-center">
+          <li>
+            <%= link_to "教育部门", new_session_path(:admin), class: (params[:role].blank? || params[:role] == "education") ? "active" : "" %>
+          </li>
+          <li>
+            <%= link_to "秘书处", new_session_path(:admin, role: :system), class: params[:role] == "system" ? "active" : "" %>
+          </li>
+          <li>
+            <%= link_to "培训机构", new_session_path(:admin, role: :trainer), class: params[:role] == "trainer" ? "active" : "" %>
+          </li>
+          <li>
+            <%= link_to "评审专家", new_session_path(:admin, role: :specialist), class: params[:role] == "specialist" ? "active" : "" %>
+          </li>
+          <li>
+            <%= link_to "班级负责人", new_session_path(:admin, role: :management), class: params[:role] == "management" ? "active" : "" %>
+          </li>
+        </ul>
+      </div>
+
+      <%= render "admins/sessions/form/#{params[:role].present? ? params[:role] : 'education'}"%>
+      
+    </div>
+  </div>
+</div>
+
+<!-- 网站底部信息 -->
+<%= render "admins/sessions/footer" %>
+
+<!-- <script type="text/javascript">
+  $(function(){
+    $(".js-panel-toggle").hide();
+    $(".js-panel-toggle").first().show();
+    $(".login-content .fix-panel ul li").each(function(index){
+      var _this = $(this);
+      var _index = index;
+      _this.find("a").click(function(){
+        $(this).addClass("active").parent().siblings().find("a").removeClass("active");
+        $(".js-panel-toggle").eq(_index).show().siblings(".js-panel-toggle").hide();
+      })
+    })
+  });
+</script> -->

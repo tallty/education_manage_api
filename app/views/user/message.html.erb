@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="wrapper">
+    <div class="row">
+      <div class="personal_center right_message_tab col-md-3">
+        <%= render "personal_nav"%>
+      </div>
+      <div class="tab-content courses col-md-9 pull-right">
+          <div class="personal_center_content right-nav-tab">
+            <strong class=" col-md-3 right_message_tab"><span>我的消息</span></strong><br/><br/>
+            <table class="border-table">
+              <tr>
+                <th></th>
+                <th>类型</th>
+                <th width="30%">标题</th>
+                <th width="35%">内容</th>
+                <th>创建时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+              <% @messages.each do |message|%>
+              <tr>
+                <td>&nbsp;<input type="checkbox" />&nbsp;</td>
+                <td>
+                  系统消息
+                </td>
+                <td><%= message.title %></td>
+                <td><%= message.content %></td>
+                <td><%= message.created_at.strftime("%F") %><br><%= message.created_at.strftime("%H:%M") %></td>
+                <td class="text-info">
+                  <% if message.message_by_user.status == "unread" %>
+                    <%= link_to(UserMessage::Status[(message.message_by_user).status.to_sym], read_user_message_path(message.message_by_user)) %>
+                  <% else %>
+                    <%= UserMessage::Status[(message.message_by_user).status.to_sym] %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to("删除", user_message_path(message.message_by_user), method: :delete, data: {confirm: '确认删除这条消息吗？'}) %>
+                </td>
+              </tr>
+              <% end %>
+            </table>
+            <div class="text-center">
+              <%= paginate @messages %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!-- 内容部分开始 -->
+<div class="wrapper container">
+	<div class="content clearfix">
+		<div class="row">
+			<div class="col-xs-6">
+				<div class="events-list col-xs-12">新闻动态
+		      <%= link_to "更多>>", list_reports_path(classify: 2), class: 'more pull-right'%>
+				</div>
+				<% @headlines.each do |event| %>
+					<%=link_to event_path(event) do %>
+						<div class="col-xs-12 news-list">
+						  <%=image_tag "h_news_icon.gif", class: "news_icon" %>
+						  <%= link_to truncate(event.title, length: 26), event_path(event) %>&nbsp;
+						  <% if event_in_two_weeks(event) %>
+						    <%=image_tag "news_t.png" %>
+						  <% end %>
+						  <span class="pull-right news-time"><%= event.created_at.strftime("%F") %>&nbsp;</span>
+						<hr class="news-hr">
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="col-xs-6">
+				<div class="events-list col-xs-12">通知公告
+		      <%= link_to "更多>>", list_reports_path(classify: 1), class: 'more pull-right'%>
+				</div>
+				<% @bulletins.each do |event| %>
+					<%=link_to event_path(event) do %>
+						<div class="col-xs-12 news-list">
+						  <%=image_tag "h_news_icon.gif", class: "news_icon" %>
+						  <%= link_to truncate(event.title, length: 26), event_path(event) %>&nbsp;
+						  <% if event_in_two_weeks(event) %>
+						    <%=image_tag "news_t.png" %>
+						  <% end %>
+						  <span class="pull-right news-time"><%= event.created_at.strftime("%F") %>&nbsp;</span>
+						<hr class="news-hr">
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,88 @@
+<ol class="breadcrumb">
+  <li>
+    <%= link_to "后台", admin_panel_root_path  %>
+  </li>
+  <li class="active">首页</li>
+</ol>
+
+<div class="main-content">
+	<div class="col-sm-8">
+		<div class="panel panel-default">
+	    <div class="panel-heading panel-active"><%= Time.now.strftime("%Y年%m月")%></div>
+	    <div class="panel-body panel-default-bg">
+	      <!-- 代办事项 -->
+	      <div class="col-sm-12">
+      	  <div class="col-sm-2 text-center">
+      	    <h1><%= Time.now.strftime("%d")%></h1>
+      	    <p>星期一</p>
+      	    <%= current_admin.id %>
+	        </div>
+	        <div class="col-sm-10">
+	          <div class="col-sm-12">
+	          	<div class="col-sm-3 text-center">
+		      	   	<%= link_to new_admin_panel_todo_path, remote: true do %>
+	      	        <span class="glyphicon glyphicon-edit" style="font-size: 28px;"></span>
+	      	        <p>待办事项</p>
+		      	    <% end %>
+		      	  </div>
+		      	  <div class="col-sm-9" id="todos-content">
+		      	    <ul>
+		      	      <% @todos.each do |todo| %>
+		      	        <%= form_for [:admin_panel, todo], remote: true do |f|%>
+			      	        <li class="todo">
+			      	          <%= f.check_box :state %><%= todo.content %>
+                        <%= f.submit "", style: "display: none;" %>
+			      	        </li>
+			      	      <% end %>
+		      	      <% end %>
+		      	    </ul>
+		      	  </div>
+		      	</div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="panel panel-default">
+	    <div class="panel-heading panel-active">即将开班的培训班</div>
+	    <div class="panel-body panel-default-bg">
+	      <table class="table">
+		    	<thead>
+		    	  <tr>
+			    		<th class="text-center">年份</th>
+			    		<th class="text-center">名称</th>
+			    		<th class="text-center">培训机构</th>
+			    		<th class="text-center">计划</th>
+			    		<th class="text-center">报名</th>
+			    		<th class="text-center">操作</th>
+		    	  </tr>
+		    	</thead>
+		    	<tbody>
+		    	  <%= render partial: "training_course", locals: {training_courses: @training_courses} %>
+		    	</tbody>
+		    </table>
+	    </div>
+	  </div>
+	</div>
+	<div class="col-sm-4">
+	  <%= render "admin_panel/home/info"%>
+	</div>
+</div>
+
+<div class="modal fade" id="todoModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">创建待办事项</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+	$("#todos-content .todo input[type='checkbox']").click(function(){
+    $(this).siblings("input[type='submit']").submit();
+	});
+</script>

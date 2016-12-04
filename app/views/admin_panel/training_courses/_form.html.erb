@@ -1,0 +1,217 @@
+<div class="panel-heading panel-active"><%= params[:action] == "new" ? "新建项目" : "修改项目"%></div>
+  <div class="panel-body panel-default-bg">
+  	<%= nested_form_for [:admin_panel, @notification, @training_course], html: { class: 'form-horizontal' } do |f|%>
+
+        <div class="form-group">
+          <%= f.label :code, '培训班级代码', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :code, placeholder: "请输入培训班级代码", class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag :teachers, '教师团队', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <% Teacher.all.each do |teacher| %>
+              <%= check_box_tag("training_course[teacher_ids][]", teacher.id, teacher.id.in?(@training_course.teachers.collect(&:id)))%>
+              <%= teacher.name %>
+            <%end%>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag :divides, '分组', class: 'col-sm-3 control-label' %>
+          <%= f.fields_for :divides do |field| %>
+            <div class="col-sm-9 col-sm-offset-3 margin-b-10">
+              <div class="col-sm-3">
+                <%= field.text_field :name, placeholder: "组名", class: 'form-control'%>
+              </div>
+              <div class="col-sm-3">
+                <%= field.select :header, @training_course.users.all.collect {|p| [ p.name, p.name ] }, { prompt: "请选择组长" }, class: "form-control" %>
+              </div>
+              <%= field.link_to_remove do %>
+                <span class="glyphicon glyphicon-remove btn btn-danger"></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= f.link_to_add "添加分组", :divides, class: "col-sm-9 col-sm-offset-3 btn btn-xs" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name, '培训班级名称', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :name, placeholder: "请输入培训班级名", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :school_id, '培训机构', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <%= f.select('school_id', School.all.pluck(:name, :id), {prompt: "请选择培训机构"}, class: "form-control") %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :project_leader, '项目负责人', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :project_leader, placeholder: "请输入培训项目负责人", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :admin_id, '班级负责人', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <% @grade_leaders.each do |p| %>
+              <%= f.radio_button :admin_id, p.id %>
+              <%= f.label :admin_id, p.name %>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :start_time, '开始时间', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.date_field :start_time, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :end_time, '结束时间', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.date_field :end_time, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :start_apply_time, '报名开始时间', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.date_field :start_apply_time, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :end_apply_time, '报名结束时间', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.date_field :end_apply_time, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :task_end_time, '作业截止时间', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.date_field :task_end_time, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :journal_number, '达标日志的数量', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.number_field :journal_number, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :plan_number, '计划人数', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.number_field :plan_number, placeholder: "请输入计划人数", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :training_address, '培训地点', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :training_address, placeholder: "请输入培训地点", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :training_fee, '培训费用', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-2">
+            <%= f.text_field :training_fee, placeholder: "请输入培训费用", class: 'form-control'%>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :contact, '联系方式', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <%= f.text_field :contact, placeholder: "请输入联系方式", class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :contact, "是否可报名", class: 'col-sm-3 control-label' %>
+          <div class="col-sm-4">
+            <%= f.check_box :be_applied %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :info, '项目信息', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.kindeditor :info, :window_onload => true, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :training_background, '机构背景', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.kindeditor :training_background, :window_onload => true, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :training_target, '培训目标', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.kindeditor :training_target, :window_onload => true, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :training_content, '培训内容', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.kindeditor :training_content, :window_onload => true, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :check_method, '考核方法', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-8">
+            <%= f.kindeditor :check_method, :window_onload => true, class: 'form-control' %>
+          </div>
+        </div>
+      <hr>
+      <div class="well">以下为学员可打印培训班联系信息【<span class="text-danger">选填</span>】</div>
+      <div class="form-group">
+        <%= f.label :linkman, '联系人', class: 'col-sm-3 control-label' %>
+        <div class="col-sm-4">
+          <%= f.text_field :linkman, placeholder: "多个联系人姓名请用空格隔开", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone, '联系电话', class: 'col-sm-3 control-label' %>
+        <div class="col-sm-4">
+          <%= f.text_field :phone, placeholder: "多个联系电话请用空格隔开", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :fax, '传真', class: 'col-sm-3 control-label' %>
+        <div class="col-sm-4">
+          <%= f.text_field :fax, placeholder: "多个传真号请用空格隔开", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :mobile, '手机号', class: 'col-sm-3 control-label' %>
+        <div class="col-sm-4">
+          <%= f.text_field :mobile, placeholder: "多个手机号请用空格隔开", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, '邮箱', class: 'col-sm-3 control-label' %>
+        <div class="col-sm-4">
+          <%= f.text_field :email, placeholder: "多个邮箱请用空格隔开", class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :remark, '备注', class: 'col-sm-3 control-label' %>
+        <div class="col-sm-4">
+          <%= f.text_area :remark, placeholder: "请输入备注信息", class: 'form-control' %>
+        </div>
+      </div>
+  	  <div class="col-sm-6 col-sm-offset-4">
+  	  	<%= f.submit '确认提交', class: "btn btn-primary pull-left" %>
+  	  </div>
+  	<% end %>
+  </div>

@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="wrapper">
+    <div class="row">
+      <div class="personal_center right_message_tab col-md-3">
+        <%= render "personal_nav"%>
+      </div>
+      <div class="tab-content courses col-md-9 pull-right">
+        <div class="personal_center_content right-nav-tab">
+          <strong class="col-md-3 right_message_tab"><span>我的日志</span></strong><br/><br/>
+          <div id="addJournal" class="add-journal pull-right">
+            <%= link_to new_journal_path, remote: true do %>
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加日志
+            <% end %>
+          </div>
+          <table class="border-table">
+            <tr>
+              <th>日期</th>
+              <th width="30%">培训班</th>
+              <th width="35%">日志内容</th>
+              <th>创建时间</th>
+              <th>操作</th>
+            </tr>
+            <% @journals.each do |journal|%>
+              <tr>
+                <td><%= journal.try(:add_date).strftime("%Y-%m-%d") if journal.try(:add_date) %></td>
+                <td><%= journal.try(:training_course).try(:name) %></td>
+                <td><%= raw journal.content %></td>
+                <td><%= journal.try(:created_at).strftime("%Y-%m-%d %H:%M") %></td>
+                <td>
+                  <%= link_to "编辑", edit_journal_path(journal), remote: true, class: "text-danger"%>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+          <div class="text-center"><%= paginate @journals%></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 编辑日志 -->
+<div id="JournalModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">我的日志</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>

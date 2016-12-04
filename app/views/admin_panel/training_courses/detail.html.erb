@@ -1,0 +1,111 @@
+<div class="main-content">
+  <div class="panel panel-default">
+	  <div class="panel-heading panel-active">
+	    <ul class="nav nav-pills nav-content-menu">
+			  <li role="presentation" class="<%= params[:controller]=='admin_panel/training_courses' ? 'active' : ''%>">
+			    <%= link_to detail_admin_panel_training_course_path(@training_course) do %>
+	          <span>培训班信息</span>
+	        <% end %>
+			  </li>
+
+			  <li role="presentation">
+		      <%= link_to admin_panel_training_course_user_training_courses_path(@training_course) do %>
+            <span>培训班报名列表</span>
+          <% end %>
+        </li>
+        <li role="presentation" class="<%= params[:controller]=='admin_panel/tasks' ? 'active' : ''%>">
+          <%= link_to admin_panel_training_course_tasks_path(@training_course) do %>
+           <span class="">布置作业列表</span>
+          <% end %>
+        </li>
+			</ul>
+	  </div>
+	  <div class="panel-body panel-default-bg">
+	    <table class="table">
+	      <tr>
+	      	<th class="col-sm-1">培训班级代码</th>
+	      	<td><%= @training_course.code %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">分类</th>
+	      	<td><%= TrainingCourse::ListCategory[@training_course.category.to_sym] %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">培训班</th>
+	      	<td><%= @training_course.name %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">培训机构</th>
+	      	<td><%= @training_course.try(:school).try(:name) %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-2">项目负责人</th>
+	      	<td><%= @training_course.project_leader %></td>
+	      </tr>
+
+	      <tr>
+	      	<th class="col-sm-2">班级负责人</th>
+	      	<td><%= @training_course.try(:admin).name %></td>
+	      </tr>
+
+	      <tr>
+	      	<th class="col-sm-1">教师团队</th>
+	      	<td>
+	      	  <% @training_course.teachers.each do |teacher| %>
+	      	    <span><%= teacher.name %></span>
+	      	  <% end %>
+	      	</td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">起止时间</th>
+	      	<td><%= @training_course.start_time.try(:strftime, "%F")%> ~ <%= @training_course.end_time.try(:strftime,"%F") %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">报名起止时间</th>
+	      	<td><%= @training_course.start_apply_time.try(:strftime, "%F")%> ~ <%= @training_course.end_apply_time.try(:strftime,"%F") %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">计划数</th>
+	      	<td><%= @training_course.plan_number %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">培训地点</th>
+	      	<td><%= @training_course.training_address %></td>
+	      </tr>
+
+	      <tr>
+	      	<th class="col-sm-1">培训费用</th>
+	      	<td><%= @training_course.training_fee %></td>
+	      </tr>
+
+
+	      <tr>
+	      	<th class="col-sm-1">联系方式</th>
+	      	<td><%= @training_course.contact %></td>
+	      </tr>
+
+	      <tr>
+	      	<th class="col-sm-1">可否报名</th>
+	      	<td><%= @training_course.be_applied ? '是' : '否' %></td>
+	      </tr>
+
+	      <tr>
+	      	<th class="col-sm-1">项目信息</th>
+	      	<td><%= raw @training_course.info %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">机构背景</th>
+	      	<td><%= raw @training_course.training_background %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">培训目标</th>
+	      	<td><%= raw @training_course.training_target %></td>
+	      </tr>
+	      <tr>
+	      	<th class="col-sm-1">考核方法</th>
+	      	<td><%= raw @training_course.check_method %></td>
+	      </tr>
+	    </table>
+	  </div>
+	</div>
+</div>

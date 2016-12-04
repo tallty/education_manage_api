@@ -1,0 +1,20 @@
+<!-- 内容详情部分开始 -->
+<div class="row">
+	<div class="container">
+		<div class="col-xs-12 news-show-content">
+			<div class="col-xs-12 report-show-title">
+				<div class="col-xs-2" style="padding-top: 4px;">内容详情</div>
+			</div>
+			<div class="col-xs-12 report-show-content">
+				<% @events.each do |event| %>
+				<div class="col-xs-12 news-list"><%=image_tag "h_news_icon.gif", class:"news_icon" %><%= link_to "#{event.title}", event_path(event) %>&nbsp;<%=image_tag "news_t.png" %><span class="pull-right news-time"><%= event.created_at.strftime("%F") %>&nbsp;</span>
+				<hr class="news-hr">
+				</div>
+				<% end %>
+				<div class="col-xs-12 text-center"><%= paginate @events %></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 内容详情部分结束 -->
+

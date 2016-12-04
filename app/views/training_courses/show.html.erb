@@ -1,0 +1,64 @@
+<div class="wrapper">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="content">
+				<div class="right-head">
+					<div class="col-xs-2 text-center"><strong>培训报名</strong></div>
+				</div>
+				<div id="tranApplyInfoContent" class="right-body text-center">
+					<ul class="nav-justified apply_info_nav">
+						<li role="presentation" class="active"><a href="javascript:void(0);">培训班级信息</a></li>
+						<li role="presentation"><a href="javascript:void(0);">培训项目信息</a></li>
+						<li role="presentation"><a href="javascript:void(0);">机构背景</a></li>
+						<li role="presentation"><a href="javascript:void(0);">培训目标</a></li>
+						<li role="presentation"><a href="javascript:void(0);">培训内容</a></li>
+						<li role="presentation"><a href="javascript:void(0);">考核方法</a></li>
+						<li role="presentation"><a href="javascript:void(0);">授课教师</a></li>
+					</ul>
+					<!-- ================培训班信息=============== -->
+					<div class="apply-info-tab">
+						<%= render "/training_courses/apply/info" %>
+					</div>
+					<!-- ================培训班级信息=============== -->
+
+					<!-- ================培训项目信息=============== -->
+					<div class="apply-info-tab" style="display: none;">
+						<%= render "/training_courses/apply/project_info" %>
+					</div>
+					<!-- ================培训项目信息=============== -->
+
+					<!-- ================机构背景=============== -->
+					<div class="apply-info-tab" style="display: none;">
+						<%= render "/training_courses/apply/background" %>
+					</div>
+					<!-- ================机构背景=============== -->
+
+					<!-- ================培训目标=============== -->
+					<div class="apply-info-tab" style="display: none;">
+						<%= render "/training_courses/apply/target" %>
+					</div>
+					<!-- ================培训目标=============== -->
+
+					<!-- ================培训内容=============== -->
+					<div class="apply-info-tab" style="display: none;">
+						<%= render "/training_courses/apply/content" %>
+					</div>
+					<!-- ================培训内容=============== -->
+
+					<!-- ================考核方法=============== -->
+					<div class="apply-info-tab" style="display: none;">
+						<%= render "/training_courses/apply/check_method" %>
+					</div>
+					<!-- ================考核方法=============== -->
+
+					<!-- ================授课教师=============== -->
+					<div class="apply-info-tab" style="display: none;">
+						<%= render "/training_courses/apply/teachers" %>
+					</div>
+					<!-- ================授课教师=============== -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
