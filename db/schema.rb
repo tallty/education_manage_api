@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203105320) do
+ActiveRecord::Schema.define(version: 20161204060724) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -405,8 +405,10 @@ ActiveRecord::Schema.define(version: 20161203105320) do
     t.text     "his_train",              limit: 65535
     t.string   "profession",             limit: 255
     t.integer  "role",                   limit: 4
+    t.string   "authentication_token",   limit: 30
   end
 
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
