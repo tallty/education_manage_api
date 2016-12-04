@@ -42,5 +42,25 @@ FactoryGirl.define do
     email "13813813811@163.com"   
     password "abcd.1234"
     authentication_token "qwertyuiop123"
+
+    name "张三峰"
+    ID_number "520520000"
+    birth  "1993-09-09"
+    school "string(255)"
+    academy "string(255)"
+    certificate "string(255)"
+    nation "string(255)"
+    position_name "string(255)"
+    position  "string(255)"
+    address  "string(255)"
+    zip_code "string(255)"
+    telephone "string(255)"
+    phone "string(255)"
+    qq_no "string(255)"
+    summary "text(65535)"
+    country "string(255)"
+    his_train "text(65535)"
+    profession "string(255)"
+    role 1
   end
 end
