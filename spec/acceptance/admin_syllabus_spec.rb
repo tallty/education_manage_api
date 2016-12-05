@@ -68,7 +68,7 @@ resource "管理员对 课程表 相关的API" do
     get "/admin/syllabuses/:id" do
 
       let(:id) {@admin_syllabuses.first.id}
-
+ 
       example " 管理员 查询指定 课程表 的详情成功" do
         do_request
         puts response_body
