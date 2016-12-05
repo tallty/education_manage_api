@@ -9,15 +9,12 @@ class UploadCourseList
 				next if xlsx.formatted_value(row,"B").nil? # 表格中不存在工号
 
 		_syllabus = Syllabus.new
-		# _syllabus.user_id = _user.id
-		
+		_syllabus.training_course_id = _syllabus.training_course.id
+
 		_syllabus.title = UploadCourseList.get_title(row,xlsx) 
 		_syllabus.content = UploadCourseList.get_content(row,xlsx) 
 		_syllabus.address = UploadCourseList.get_address(row,xlsx) 
 		_syllabus.course_time = UploadCourseList.get_course_time(row,xlsx) 
-		# _syllabus.department_and_duty = UploadCourseList.get_department(row,xlsx) + "  " + UploadCourseList.get_duty(row,xlsx) 
-		# _syllabus.starting_time_for_the_present_job = UploadCourseList.get_time(row,xlsx) 
-
 		_syllabus.save!		
 	  end
 	  # file.close
