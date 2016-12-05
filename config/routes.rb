@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :signs, only: [:index, :show]
-    resources :syllabuses, only: [:index, :show, :create, :update, :destroy]
+    resources :syllabuses, only: [:index, :show, :create, :update, :destroy] do
+      member do
+        post :upload_course_list #上传课程表
+        post :load_course_list_template#上传课程表模板
+      end
+    end
   end
 
   ####################################################################

@@ -13,17 +13,17 @@ resource "学员 签到 相关的API" do
 
     parameter :syllabus_id, " 对应的课程表id(必填)",required: true, scope: :sign
     parameter :user_id, "签到的学员名称(必填)",required: true, scope: :sign
-    parameter :title, " 课程名称(必填)",required: true, scope: :sign
-    parameter :content, " 课程简介(必填)",required: true, scope: :sign
-    parameter :address, " 签到地址(必填)",required: true, scope: :sign
-    parameter :teacher, " 培训老师(必填)",required: true, scope: :sign
+    # parameter :title, " 课程名称(必填)",required: true, scope: :sign
+    # parameter :content, " 课程简介(必填)",required: true, scope: :sign
+    # parameter :address, " 签到地址(必填)",required: true, scope: :sign
+    # parameter :teacher, " 培训老师(必填)",required: true, scope: :sign
 
     let(:syllabus_id) {sign_attrs[:syllabus_id]}
     let(:user_id) {sign_attrs[:user_id]}
-    let(:title) {sign_attrs[:title]}
-    let(:content) {sign_attrs[:content]}
-    let(:address) {sign_attrs[:address]}
-    let(:teacher) {sign_attrs[:teacher]}
+    # let(:title) {sign_attrs[:title]}
+    # let(:content) {sign_attrs[:content]}
+    # let(:address) {sign_attrs[:address]}
+    # let(:teacher) {sign_attrs[:teacher]}
 
     before do
       @user = create(:user)
