@@ -65,7 +65,7 @@ gem "apitome"
 
 # Pagination library for Rails, Sinatra, Merb, DataMapper, and more
 # Read more: https://github.com/mislav/will_paginate
-gem 'will_paginate'
+# gem 'will_paginate'
 # i18n relate gems
 # Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff http://rails-i18n.org
 # Read more: https://github.com/svenfuchs/rails-i18n
