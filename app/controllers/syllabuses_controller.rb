@@ -7,9 +7,10 @@ class SyllabusesController < ApplicationController
   # GET /syllabuses
   # GET /syllabuses.json
   def index
-    page = params[:page] || 1
-    per_page = params[:per_page] || 5
-    @syllabuses = Syllabus.all.paginate(page: page, per_page:per_page)
+    # page = params[:page] || 1
+    # per_page = params[:per_page] || 5
+    # @syllabuses = Syllabus.all.paginate(page: page, per_page:per_page)
+    @syllabuses = Syllabus.all.page(params[:page]).per(5)
     respond_with(@syllabuses)
   end
 
