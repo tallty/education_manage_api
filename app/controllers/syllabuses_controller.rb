@@ -1,5 +1,5 @@
 class SyllabusesController < ApplicationController
-  acts_as_token_authentication_handler_for User
+  # acts_as_token_authentication_handler_for User
   before_action :set_syllabus, only: [:show, :update, :destroy]
 
   respond_to :json, :html
