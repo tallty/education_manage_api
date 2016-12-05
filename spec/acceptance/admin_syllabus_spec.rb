@@ -10,21 +10,22 @@ resource "管理员对 课程表 相关的API" do
 
     header "X-Admin-Token", admin_attrs[:authentication_token]
     header "X-Admin-Email", admin_attrs[:email]
-    parameter :title, " 课程表 课程的标题",required: true, scope: :syllabus
-    parameter :training_course_id, "课程表 课程 属于的项目",required: true, scope: :syllabus
-    parameter :school_id, "课程表 课程属于的 学校",required: true, scope: :syllabus
-    parameter :course_time, "课程表 课程的开课 时间",required: true, scope: :syllabus
-    parameter :content, "课程表 课程简介",required: true, scope: :syllabus
+    parameter :title, " 课程表 课程的标题 (必填)",required: true, scope: :syllabus
+    parameter :training_course_id, "课程表 课程 属于的项目(必填)",required: true, scope: :syllabus
+    parameter :teacher, "课程表 课程老师名称(必填)",required: true, scope: :syllabus
+    parameter :course_time, "课程表 课程的开课 时间(必填)",required: true, scope: :syllabus
+    parameter :content, "课程表 课程简介(必填)",required: true, scope: :syllabus
+    parameter :address, "课程表 签到地址(必填)",required: true, scope: :syllabus
 
     let(:title) {syllabus_attrs[:title]}
     let(:training_course_id) {syllabus_attrs[:training_course_id]}
-    let(:school_id) {syllabus_attrs[:school_id]}
+    let(:teacher) {syllabus_attrs[:teacher]}
     let(:course_time) {syllabus_attrs[:course_time]}
     let(:content) {syllabus_attrs[:content]}
+    let(:address) {syllabus_attrs[:address]}
 
     before do
       @admin = create(:admin)
-      # @school = create(:school)
       # @training_course = create(:training_course)
     end
 
