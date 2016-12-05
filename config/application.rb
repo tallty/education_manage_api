@@ -49,6 +49,8 @@ module OnlineTrain
     config.i18n.default_locale = 'zh-CN'
     config.encoding = 'utf-8'
 
+    config.gem 'spreadsheet'
+
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 

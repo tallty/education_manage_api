@@ -14,7 +14,9 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
   after_filter :store_location
 
-
+  ###################
+  skip_before_action :verify_authenticity_token
+  #################
 
   # 将当前用户传递到Model中
   def set_current_user
