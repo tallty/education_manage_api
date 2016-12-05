@@ -15,6 +15,7 @@
 
 class Syllabus < ActiveRecord::Base
   belongs_to :training_course
+  has_many :signs, dependent: :destroy
 
   ################validates#####################
   validates_presence_of :training_course_id, on: :create, message: " training_course_id不能为空"
