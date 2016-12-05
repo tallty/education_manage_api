@@ -17,5 +17,11 @@
 class Sign < ActiveRecord::Base
   belongs_to :user
   belongs_to :syllabus
-
+  
+  ################validates#####################
+  validates_presence_of :syllabus_id, on: :create, message: " syllabus_id不能为空"
+  validates_presence_of :user_id, on: :create, message: "user_id不能为空"
+  validates_presence_of :title, on: :create, message: "title不能为空"
+  validates_presence_of :teacher, on: :create, message: " teacher不能为空"
+  validates_presence_of :address, on: :create, message: "address不能为空"  
 end
