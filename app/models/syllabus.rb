@@ -15,7 +15,12 @@
 
 class Syllabus < ActiveRecord::Base
   belongs_to :training_course
-  belongs_to :school
-  belongs_to :teacher
-  has_many :signs, dependent: :destroy
+
+  ################validates#####################
+  validates_presence_of :training_course_id, on: :create, message: " training_course_id不能为空"
+  validates_presence_of :course_time, on: :create, message: "course_time不能为空"
+  validates_presence_of :title, on: :create, message: "title不能为空"
+  validates_presence_of :content, on: :create, message: " content不能为空"
+  validates_presence_of :address, on: :create, message: "address不能为空"
+  validates_presence_of :teacher, on: :create, message: "teacher不能为空"
 end
