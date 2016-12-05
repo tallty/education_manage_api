@@ -3,38 +3,39 @@ require 'acceptance_helper'
 resource "管理员对 课程表 相关的API" do
   header "Accept", "application/json"
 
-  # #################### create #############################
-  # post '/admin/syllabuses' do
-  #   admin_attrs = FactoryGirl.attributes_for(:admin)
-  #   syllabus_attrs = FactoryGirl.attributes_for(:syllabus)
+  #################### create #############################
+  post '/admin/syllabuses' do
+    admin_attrs = FactoryGirl.attributes_for(:admin)
+    syllabus_attrs = FactoryGirl.attributes_for(:syllabus)
 
-  #   header "X-Admin-Token", admin_attrs[:authentication_token]
-  #   header "X-Admin-Email", admin_attrs[:email]
-  #   parameter :title, " 课程表 课程的标题 (必填)",required: true, scope: :syllabus
-  #   parameter :training_course_id, "课程表 课程 属于的项目(必填)",required: true, scope: :syllabus
-  #   parameter :teacher, "课程表 课程老师名称(必填)",required: true, scope: :syllabus
-  #   parameter :course_time, "课程表 课程的开课 时间(必填)",required: true, scope: :syllabus
-  #   parameter :content, "课程表 课程简介(必填)",required: true, scope: :syllabus
-  #   parameter :address, "课程表 签到地址(必填)",required: true, scope: :syllabus
+    header "X-Admin-Token", admin_attrs[:authentication_token]
+    header "X-Admin-Email", admin_attrs[:email]
 
-  #   let(:title) {syllabus_attrs[:title]}
-  #   let(:training_course_id) {syllabus_attrs[:training_course_id]}
-  #   let(:teacher) {syllabus_attrs[:teacher]}
-  #   let(:course_time) {syllabus_attrs[:course_time]}
-  #   let(:content) {syllabus_attrs[:content]}
-  #   let(:address) {syllabus_attrs[:address]}
+    parameter :title, " 课程表 课程的标题 (必填)",required: true, scope: :syllabus
+    parameter :training_course_id, "课程表 课程 属于的项目(必填)",required: true, scope: :syllabus
+    parameter :teacher, "课程表 课程老师名称(必填)",required: true, scope: :syllabus
+    parameter :course_time, "课程表 课程的开课 时间(必填)",required: true, scope: :syllabus
+    parameter :content, "课程表 课程简介(必填)",required: true, scope: :syllabus
+    parameter :address, "课程表 签到地址(必填)",required: true, scope: :syllabus
 
-  #   before do
-  #     @admin = create(:admin)
-  #     # @training_course = create(:training_course)
-  #   end
+    let(:title) {syllabus_attrs[:title]}
+    let(:training_course_id) {syllabus_attrs[:training_course_id]}
+    let(:teacher) {syllabus_attrs[:teacher]}
+    let(:course_time) {syllabus_attrs[:course_time]}
+    let(:content) {syllabus_attrs[:content]}
+    let(:address) {syllabus_attrs[:address]}
 
-  #   example "管理员 创建课程表 成功" do
-  #     do_request
-  #     puts response_body
-  #     expect(status).to eq(201)
-  #   end
-  # end
+    before do
+      @admin = create(:admin)
+      # @training_course = create(:training_course)
+    end
+
+    example "管理员 创建课程表 成功" do
+      do_request
+      puts response_body
+      expect(status).to eq(201)
+    end
+  end
 
   ############### before_do ################################
   describe 'syllabus condition is all correct' do
@@ -106,43 +107,45 @@ resource "管理员对 课程表 相关的API" do
         expect(status).to eq(200)
       end
     end
-    # ##################### update #############################
-    # put "/admin/syllabuses/:id" do
+    ##################### update #############################
+    put "/admin/syllabuses/:id" do
 
-    #   let(:id) {@admin_syllabuses.first.id}
+      let(:id) {@admin_syllabuses.first.id}
 
-    #   syllabus_attrs = FactoryGirl.attributes_for(:syllabus)
+      syllabus_attrs = FactoryGirl.attributes_for(:syllabus)
 
-    #   parameter :title, " 课程表 课程的标题",required: true, scope: :syllabus
-    #   parameter :training_course_id, "课程表 课程 属于的项目",required: true, scope: :syllabus
-    #   parameter :school_id, "课程表 课程属于的 学校",required: true, scope: :syllabus
-    #   parameter :course_time, "课程表 课程的开课 时间",required: true, scope: :syllabus
-    #   parameter :content, "课程表 课程简介",required: true, scope: :syllabus
+      parameter :title, " 课程表 课程的标题 (必填)",required: true, scope: :syllabus
+      parameter :training_course_id, "课程表 课程 属于的项目(必填)",required: true, scope: :syllabus
+      parameter :teacher, "课程表 课程老师名称(必填)",required: true, scope: :syllabus
+      parameter :course_time, "课程表 课程的开课 时间(必填)",required: true, scope: :syllabus
+      parameter :content, "课程表 课程简介(必填)",required: true, scope: :syllabus
+      parameter :address, "课程表 签到地址(必填)",required: true, scope: :syllabus
 
-    #   let(:title) {syllabus_attrs[:title]}
-    #   let(:training_course_id) {syllabus_attrs[:training_course_id]}
-    #   let(:school_id) {syllabus_attrs[:school_id]}
-    #   let(:course_time) {syllabus_attrs[:course_time]}
-    #   let(:content) {syllabus_attrs[:content]}
+      let(:title) {syllabus_attrs[:title]}
+      let(:training_course_id) {syllabus_attrs[:training_course_id]}
+      let(:teacher) {syllabus_attrs[:teacher]}
+      let(:course_time) {syllabus_attrs[:course_time]}
+      let(:content) {syllabus_attrs[:content]}
+      let(:address) {syllabus_attrs[:address]}
 
-    #   example " 管理员 修改指定 课程表 成功" do
-    #     do_request
-    #     puts response_body
-    #     expect(status).to eq(201)
-    #   end
-    # end
+      example " 管理员 修改指定 课程表 成功" do
+        do_request
+        puts response_body
+        expect(status).to eq(201)
+      end
+    end
 
-    # ##################### delete #############################
-    # delete "/admin/syllabuses/:id" do
+    ##################### delete #############################
+    delete "/admin/syllabuses/:id" do
 
-    #   let(:id) {@admin_syllabuses.first.id}
+      let(:id) {@admin_syllabuses.first.id}
 
-    #   example " 管理员 删除指定 课程表 成功" do
-    #     do_request
-    #     puts response_body
-    #     expect(status).to eq(204)
-    #   end
-    # end
+      example " 管理员 删除指定 课程表 成功" do
+        do_request
+        puts response_body
+        expect(status).to eq(204)
+      end
+    end
 
   end
 end
