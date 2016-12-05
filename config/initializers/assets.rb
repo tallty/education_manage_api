@@ -9,5 +9,8 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
+
+Rails.application.config.action_controller.asset_host = 'http://114.55.172.35/'
+
 Rails.application.config.assets.precompile += %w( admin_panel.css report.css report.js admin_panel.js admin_panel/training_courses.js china_germany.css china_germany.js)
 Rails.application.config.assets.precompile += %w( respond.min.js html5shiv.min.js )

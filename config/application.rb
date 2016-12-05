@@ -44,7 +44,7 @@ module OnlineTrain
     # config.action_controller.asset_host = 'http://114.55.172.35/trains/'
     # config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.action_controller.asset_host = 'http://114.55.172.35'
-    config.assets.paths << Rails.root.join("app", "assets", "fonts", "/../app")
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     config.relative_url_root = "/trains"
     config.action_controller.relative_url_root = "/trains"
