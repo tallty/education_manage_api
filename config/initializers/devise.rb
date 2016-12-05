@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'c82a1acd3b36a1b3ec679225096c06772d667500428c9667b732099092685c591ee742711df8355e375f769bb2f8e9e3b6862287a7f6fcad20bbb2b4ccb30a37'
+  # config.secret_key = 'c0edc945bca4d2978754b09533106009bb570e4abfd09a20756e6e3f26e501c3a55184df7a3b877f4d3572dfa74e976e8fc5c61926a08f4e25dae1fc0853596a'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -97,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'db6eb6c405e472b7f2dd1eaaaa73bfad73009adc7670802f5919d553c360264902535e43265338a3923a4ac4a019a6336a1b5ad9a8907b23b2f319c5d599e3bf'
+  # config.pepper = 'ce04dc4431fccdedc7cb779f1a00c2a9175e150c9f102135ba8b8ec8caec4407d463d0a85cf244b2dd154ecf1e0fc5b64f5f04c00f9d995f5dd2d04100a5191f'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -213,7 +213,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  config.sign_out_all_scopes = false
+  # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like

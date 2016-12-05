@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   ####################################################################
   resources :signs, only: [:index, :show, :create]
   resources :syllabuses, only: [:index, :show]
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     resources :syllabuses, only: [:index, :show, :create, :update, :destroy] do
       member do
         post :upload_course_list #上传课程表
-        post :load_course_list_template#上传课程表模板
+        get :load_course_list_template#上传课程表模板
       end
     end
   end

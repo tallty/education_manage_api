@@ -45,6 +45,37 @@ resource "管理员对 课程表 相关的API" do
 
     before do
       @admin = create(:admin)
+      # @training_course = create(:training_course)
+    end
+    
+    ################### upload_course_list ############
+    post 'admin/upload_course_list' do
+
+      parameter :file, "名单 仅(.xlsx)文件", required: true
+
+      example "管理员上传 课程表成功" do
+        puts "上传 课程表成功。。。。。"
+      end
+    end
+
+    ################## load_course_list_template ############
+    get 'admin/load_course_list_template' do
+      example "管理员 下载 用户信息模板xlsx文件" do
+        puts "下载 用户信息模板xlsx文件 成功"
+      end
+    end
+  end
+  
+
+  ############### before_do ################################
+  describe 'syllabus condition is all correct' do
+    admin_attrs = FactoryGirl.attributes_for(:admin)
+
+    header "X-Admin-Token", admin_attrs[:authentication_token]
+    header "X-Admin-Email", admin_attrs[:email]
+
+    before do
+      @admin = create(:admin)
       @admin_syllabuses = create_list(:syllabus, 5, course_time: Time.zone.now)
     end
 
