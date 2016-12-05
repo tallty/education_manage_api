@@ -40,6 +40,6 @@ class SignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sign_params
-      params.require(:sign).permit(:training_course_id, :school_id, :user_id, :syllabus_id, :sign_time)
+      params.require(:sign).permit(:user_id, :syllabus_id, :title, :teacher, :address)
     end
 end
