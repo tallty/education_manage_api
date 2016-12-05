@@ -10,6 +10,7 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  syllabus_id        :integer
+#  teachers_id        :integer
 #
 
 class Sign < ActiveRecord::Base
@@ -17,4 +18,5 @@ class Sign < ActiveRecord::Base
   belongs_to :school
   belongs_to :user
   belongs_to :syllabus
+  belongs_to :teacher 
 end

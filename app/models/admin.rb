@@ -28,6 +28,7 @@
 #  adminable_id           :integer
 #  adminable_type         :string(255)
 #  school_id              :integer
+#  authentication_token   :string(30)
 #
 
 class Admin < ActiveRecord::Base

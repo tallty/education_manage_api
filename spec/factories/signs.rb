@@ -10,6 +10,7 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  syllabus_id        :integer
+#  teachers_id        :integer
 #
 
 FactoryGirl.define do

@@ -35,6 +35,7 @@
 #  his_train              :text(65535)
 #  profession             :string(255)
 #  role                   :integer
+#  authentication_token   :string(30)
 #
 
 FactoryGirl.define do
