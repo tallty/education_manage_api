@@ -63,6 +63,9 @@ gem 'simple_token_authentication'
 #rails generate apitome:install
 gem "apitome"
 
+# Roo provides an interface to spreadsheets of several sorts. Read more: https://github.com/roo-rb/roo
+gem 'roo', '~> 2.5.0'
+
 # Pagination library for Rails, Sinatra, Merb, DataMapper, and more
 # Read more: https://github.com/mislav/will_paginate
 # gem 'will_paginate'
