@@ -10,22 +10,24 @@ resource "学员 签到 相关的API" do
 
     header "X-User-Token", user_attrs[:authentication_token]
     header "X-User-Email", user_attrs[:email]
-    parameter :user_id, "签到的学员",required: true, scope: :sign
-    parameter :training_course_id, "学员签到的 项目",required: true, scope: :sign
-    parameter :school_id, "学员签到的 学校",required: true, scope: :sign
-    parameter :sign_time, "学员签到的 时间",required: true, scope: :sign
-    parameter :syllabus_id, "学员签到的 课程内容",required: true, scope: :sign
 
-    let(:user_id) {sign_attrs[:user_id]}
-    let(:training_course_id) {sign_attrs[:training_course_id]}
-    let(:school_id) {sign_attrs[:school_id]}
-    let(:sign_time) {sign_attrs[:sign_time]}
+    parameter :syllabus_id, " 对应的课程表id(必填)",required: true, scope: :sign
+    parameter :user_id, "签到的学员名称(必填)",required: true, scope: :sign
+    parameter :title, " 课程名称(必填)",required: true, scope: :sign
+    parameter :content, " 课程简介(必填)",required: true, scope: :sign
+    parameter :address, " 签到地址(必填)",required: true, scope: :sign
+    parameter :teacher, " 培训老师(必填)",required: true, scope: :sign
+
     let(:syllabus_id) {sign_attrs[:syllabus_id]}
+    let(:user_id) {sign_attrs[:user_id]}
+    let(:title) {sign_attrs[:title]}
+    let(:content) {sign_attrs[:content]}
+    let(:address) {sign_attrs[:address]}
+    let(:teacher) {sign_attrs[:teacher]}
 
     before do
       @user = create(:user)
-      # @school = create(:school)
-      # @training_course = create(:training_course)
+      # @syllabus = create(:syllabus)
     end
 
     example "学员 签到 成功" do
@@ -44,7 +46,7 @@ resource "学员 签到 相关的API" do
 
     before do
       @user = create(:user)
-      # @school = create(:school)
+      # @syllabus = create(:syllabus)
       @signs = create_list(:sign, 5, sign_time: Time.zone.now)
     end
 
