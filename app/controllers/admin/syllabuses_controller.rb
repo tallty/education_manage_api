@@ -24,6 +24,12 @@ class Admin::SyllabusesController < ApplicationController
     end 
   end
 
+  #get 'admin/load_course_list_template'
+  def load_course_list_template
+    send_file File.dirname(__FILE__) + '/../../../培训管理员上传课程表模板.xlsx',
+        :filename => "培训管理员上传课程表模板.xlsx"   
+  end
+
   # def create
   #   @admin_syllabus = Syllabus.new(admin_syllabus_params)
   #   if @admin_syllabus.save
