@@ -29,10 +29,10 @@
 <div class="main-content wrapper">
   <div class="panel-list">
     <div class="panel-main">
-      <div class="panel-bg gap-70">骨干教师培训</div>
+      <div class="panel-bg-two gap-70">骨干教师培训</div>
       <div class="panel-body bordered">
 		  	<div class="panel panel-default half-width pull-left">
-					<div class="panel-heading text-center oh">
+					<div class="panel-heading text-center oh oh-two">
 				    <span class="active-title">骨干教师培训通知</span>
 				    <%= link_to "更多", notifications_path(category: 1), class: "pull-right active-link" %>
 				  </div>
@@ -41,7 +41,7 @@
 					</div>
 				</div>
 			  <div class="panel panel-default half-width pull-right">
-				  <div class="panel-heading text-center oh">
+				  <div class="panel-heading text-center oh oh-two">
 				  	<span class="active-title">骨干教师培训报名</span>
 				    <%= link_to "更多", training_courses_path(category: 1), class: "pull-right active-link" %>
 				  </div>
@@ -130,5 +130,5 @@
 
 <!-- 友情链接 -->
 <div class="main-content wrapper">
-	<%= render "common/friend_links" %>
+	<%#= render "common/friend_links" %>
 </div>

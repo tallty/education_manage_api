@@ -234,13 +234,13 @@ ActiveRecord::Schema.define(version: 20161206013125) do
   create_table "syllabuses", force: :cascade do |t|
     t.integer  "training_course_id"
     t.datetime "course_time"
-    t.string   "title",              limit: 255
-    t.text     "content",            limit: 65535
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.string   "address",            limit: 255
-    t.string   "teacher",            limit: 255
-    t.boolean  "is_active",          limit: 1,     default: false
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "address"
+    t.string   "teacher"
+    t.boolean  "is_active",          default: false
   end
 
   add_index "syllabuses", ["training_course_id"], name: "index_syllabuses_on_training_course_id"
