@@ -9,6 +9,7 @@ resource " 培训项目 内容的相关的API" do
     before do
       # @school = create(:school)
       @training_courses = create_list(:training_course, 5, category: "teacher")
+      @syllabuses = create_list(:syllabus, 5, course_time: Time.zone.now, training_course_id: @training_courses.first.id)
     end
 
     #################### index #############################

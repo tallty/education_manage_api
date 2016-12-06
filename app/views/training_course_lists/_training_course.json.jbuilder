@@ -3,3 +3,7 @@ json.extract! training_course, :id, :name, :code, :start_time, :end_time, :plan_
 json.admin_name training_course.admin.try(:name)
 json.notification_title training_course.notification.try(:title)
 json.school_name training_course.school.try(:name)
+
+json.syllabuses training_course.syllabuses do |syllabus|
+	json.partial! 'syllabuses/syllabus', syllabus: syllabus
+end
