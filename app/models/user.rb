@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   has_many :messages, through: :user_messages
   has_many :appraises, dependent: :destroy
   has_many :journals, dependent: :destroy
+  has_many :signs, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
