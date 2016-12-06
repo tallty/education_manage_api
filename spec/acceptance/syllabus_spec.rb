@@ -14,6 +14,7 @@ resource "学员对 课程表 相关的API" do
       # @user = create(:user)
       # @school = create(:school)
       @syllabuses = create_list(:syllabus, 5, course_time: Time.zone.now)
+      @signs = create_list(:sign, 5, sign_time: Time.zone.now, syllabus_id: @syllabuses.first.id )
     end
 
     #################### index #############################
