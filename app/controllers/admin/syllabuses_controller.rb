@@ -1,5 +1,5 @@
 class Admin::SyllabusesController < ApplicationController
-  acts_as_token_authentication_handler_for Admin
+  acts_as_token_authentication_handler_for Admin 
   before_action :set_admin_syllabus, only: [:show, :update, :destroy]
 
   respond_to :html, :json
