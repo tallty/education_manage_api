@@ -8,7 +8,7 @@ resource " 培训项目 内容的相关的API" do
     
     before do
       # @school = create(:school)
-      @training_courses = create_list(:training_course, 5)
+      @training_courses = create_list(:training_course, 5, category: "teacher")
     end
 
     #################### index #############################

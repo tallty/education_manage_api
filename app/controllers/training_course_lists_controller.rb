@@ -7,7 +7,7 @@ class TrainingCourseListsController < ApplicationController
     # @keyword = params[:keyword].present?? params[:keyword] : " "
     page = params[:page] || 1
     per_page = params[:per_page] || 15
-    @training_courses = TrainingCourse.all.page(params[:page]).per(params[:per_page])
+    @training_courses = TrainingCourse.all.is_training.page(params[:page]).per(params[:per_page])
     respond_with(@training_courses)
   end
 

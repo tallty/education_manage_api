@@ -62,6 +62,7 @@ class TrainingCourse < ActiveRecord::Base
                                 allow_destroy: true
 
   default_scope { order("created_at DESC") }
+  scope :is_training, ->{where('end_time >= ?', Time.now)}
 
   #分类
   enum category: {
