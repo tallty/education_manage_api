@@ -22,5 +22,6 @@ FactoryGirl.define do
     content "课程内容XX"
     teacher "XX老师"
     address "上海松江XXXX"
+    # is_active "false"
   end
 end
