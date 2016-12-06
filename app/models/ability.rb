@@ -37,6 +37,7 @@ class Ability
     can :index, :home
     can :manage, :all
     can :manage, TrainingCourse
+    can :manage, Syllabus
     can :manage, Journal
     cannot [:list], AdminUserTask
     cannot [:list_by_school, :list_by_teacher], TrainingCourse
