@@ -1,17 +1,23 @@
 <header>
-	<%= image_tag("top-bar-bg.png", class: 'main-header') %>
-	<nav class="wrapper navbar-custom">
-	  <span class="col-sm-8 col-md-8 col-xs-8">
-	  	<%= link_to home_index_path, class: "col-sm-2 col-md-2 col-xs-2 active" do %>
+	<div class="header_nav_bg">
+		<%#= image_tag("home_nav_bg.png", class: 'main-header') %>
+		<span class="title_text">上海市高职高专师资公共培训基地-培训考核平台</span>
+	</div>
+	<div class="navbar-custom" id="normal">
+	  <span class="navbar-custom-span">
+	  	<%= link_to "http://114.55.172.35", class: "no_active" do %>
+	  		培训基地
+	  	<% end %>
+	  	<%= link_to home_index_path, class: "no_active active" do %>
         首页
 	  	<% end %>
-		  <%= link_to "项目申报", projects_path, class: "col-sm-2 col-md-2 col-xs-2"%>
-		  <%= link_to "培训通知", notifications_path, class: "col-sm-2 col-md-2 col-xs-2"%>
-		  <%= link_to "培训报名", training_courses_path, class: "col-sm-2 col-md-2 col-xs-2"%>
-		  <%= link_to "培训基地", training_bases_path, class: "col-sm-2 col-md-2 col-xs-2"%>
-		  <%= link_to "个人中心", course_user_index_path, class: "col-sm-2 col-md-2 col-xs-2"%>
+		  <%= link_to "项目申报", projects_path, class: "no_active"%>
+		  <%= link_to "培训通知", notifications_path, class: "no_active"%>
+		  <%= link_to "培训报名", training_courses_path, class: "no_active"%>
+		  <%#= link_to "培训基地", training_bases_path, class: "no_active"%>
+		  <%= link_to "个人中心", course_user_index_path, class: "no_active"%>
 	  </span>
-	  <span class="col-sm-4 col-md-4 col-xs-4 login-content">
+	  <span class="login-content">
 	    <%= link_to new_admin_session_path do %>
 	      <span class="glyphicon glyphicon-cog"></span> 管理
 		  <% end %>
@@ -31,11 +37,11 @@
 			  <% end %>
 		  <% end %>
 	  </span>
-  </nav>
+	</div>
 </header>
 <script type="text/javascript">
 	$(function(){
 		$("header a").removeClass("active");
-		$("header a:eq(<%= get_menu_index %>)").addClass("active");
+		$("header a:eq(<%= get_menu_index+1 %>)").addClass("active");
 	});
 </script>

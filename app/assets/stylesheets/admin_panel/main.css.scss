@@ -68,17 +68,35 @@ a:hover, a:active, a:visited, a:link {
 
 //登录页面
 .admins__sessions__new {
+	.container_admin_login {
+		display: flex;
+		min-height: 100vh;
+	  flex-direction: column;
+	}
+	.nav_title {
+		// flex: 1;
+	  text-align: center;
+	  background-image: image-url("home_nav_bg.png");
+    background-size: 100% 100%;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 110px;
+	  color: #fff;
+		a {
+			font-size: 40px;
+		}
+	}
 	.main-content {
-		width: 100%;
-		height: 612px;
-		position: relative;
-		background: image-url("admin-login-bg.jpg") no-repeat center 2px;
-	  background-size: 100%;
+		flex: 1;
+		background-image: image-url("admin_login_bg.png");
+	  background-size: 100% 100%;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
 	  .login-content {
-	  	top: 170px;
-	  	left: 50%;
-	  	margin-left: -60px;
-	  	position: absolute;
 	  	.mt-20 {
 	  		margin-top: 20px;
 	  	}
@@ -104,13 +122,22 @@ a:hover, a:active, a:visited, a:link {
 	  }
 	}
 	footer {
-		height: 100px;
-		background: #e6ebee;
-		padding: 20px 0;
-		display: block;
-		.links {
-
-		}
+		font-size: 13px;
+	  padding: 20px 10vw;
+	  background-color: #4A4A4A;
+	  width: 100vw;
+	  flex: 1;
+	  // position: fixed;
+	  // bottom: 0;
+	  display: flex;
+	  flex-direction: row;
+	  justify-content: center;
+	  align-items: center;
+	  ul {
+	  	flex: 1;
+	  	padding-left: 20px;
+	  	color: #fff;
+	  }
 	}
 }
 
