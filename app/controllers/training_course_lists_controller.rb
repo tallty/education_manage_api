@@ -1,10 +1,12 @@
 class TrainingCourseListsController < ApplicationController
-  before_action :set_training_course_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_training_course_list, only: [:show]
 
-  respond_to :html
+  respond_to :html, :json
 
   def index
-    @training_course_lists = TrainingCourseList.all
+    page = params[:page] || 1
+    per_page = params[:per_page] || 15
+    @training_course_lists = TrainingCourse.all.page(params[:page]).per(params[:per_page])
     respond_with(@training_course_lists)
   end
 
@@ -12,36 +14,8 @@ class TrainingCourseListsController < ApplicationController
     respond_with(@training_course_list)
   end
 
-  def new
-    @training_course_list = TrainingCourseList.new
-    respond_with(@training_course_list)
-  end
-
-  def edit
-  end
-
-  def create
-    @training_course_list = TrainingCourseList.new(training_course_list_params)
-    @training_course_list.save
-    respond_with(@training_course_list)
-  end
-
-  def update
-    @training_course_list.update(training_course_list_params)
-    respond_with(@training_course_list)
-  end
-
-  def destroy
-    @training_course_list.destroy
-    respond_with(@training_course_list)
-  end
-
   private
     def set_training_course_list
-      @training_course_list = TrainingCourseList.find(params[:id])
-    end
-
-    def training_course_list_params
-      params[:training_course_list]
+      @training_course_list = TrainingCourse.find(params[:id])
     end
 end
