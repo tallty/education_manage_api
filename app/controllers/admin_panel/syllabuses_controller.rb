@@ -3,6 +3,6 @@ class AdminPanel::SyllabusesController < AdminPanel::BaseController
 
   def index
     @projects = TrainingCourse.all.page(params[:page]).per(15)
-    @syllabuses = Syllabuses.all.page(params[:page]).per(15)
+    @syllabuses = Syllabus.all.page(params[:page]).per(15)
   end
 end
