@@ -40,6 +40,9 @@
 
 class User < ActiveRecord::Base
 
+  ## Token Authenticatable
+  acts_as_token_authenticatable
+
   #acts_as_easy_captcha
   has_many :user_training_courses, dependent: :destroy
   has_many :training_courses, through: :user_training_courses
