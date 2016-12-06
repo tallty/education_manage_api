@@ -180,7 +180,7 @@ Rails.application.routes.draw do
     end
 
     # 签到管理
-    resources :projects
+    resources :syllabuses
 
     resources :tasks do
       member do
