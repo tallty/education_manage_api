@@ -30,7 +30,7 @@ class Syllabus < ActiveRecord::Base
    	time = self.course_time.to_date
    	if time == Time.new.to_date
       self.is_active = "true"
-      self.save
+      # self.save
     else
       self.is_active  
     end 
