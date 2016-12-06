@@ -17,6 +17,7 @@
 			<% end %>
 		</li>
 	<% end %>
+
 	<!-- 评审专家不显示该栏目 -->
   <% unless current_admin.specialist? %>
 		<li class="text-center">
@@ -43,6 +44,12 @@
 		  </ul>
 		</li>
 	<% end %>
+
+	<li class="text-center">
+		<%= link_to admin_panel_projects_path, class: (controller?("admin_panel/admin_user_tasks") && action?("list") ? 'active' : nil) do %>
+		  <span class="glyphicon glyphicon-list-alt"></span> &nbsp;&nbsp;签到管理
+		<% end %>
+	</li>
 
 	<% if can? [:index], Admin %>
 		<li class="text-center">

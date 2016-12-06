@@ -1,0 +1,27 @@
+<div class="main-content">
+	<div class="panel panel-default">
+	  <!-- <div class="panel-heading panel-active">评审项目</div> -->
+	  <!-- 培训机构的权限是新建申报项目 -->
+	  <div class="panel-heading panel-active" style="overflow: hidden;">
+	    <span class="pull-left">培训项目</span>
+	  </div>
+	  <div class="panel-body panel-default-bg">
+	    <table class="table table-condensed">
+	    	<thead>
+		    	<th class="text-center">培训班</th>
+	        <th class="text-center" colspan="2">操作</th>
+	    	</thead>
+	    	<tbody>
+	    	  <%= render @projects %>
+		   	</tbody>
+	    </table>
+	  </div>
+	</div>
+	<%#= paginate @training_courses %>
+</div>
+
+<script type="text/javascript">
+	$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
+</script>

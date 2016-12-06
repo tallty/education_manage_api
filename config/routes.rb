@@ -179,6 +179,9 @@ Rails.application.routes.draw do
       end
     end
 
+    # 签到管理
+    resources :projects
+
     resources :tasks do
       member do
         get :download
