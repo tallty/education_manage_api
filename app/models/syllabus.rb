@@ -26,7 +26,7 @@ class Syllabus < ActiveRecord::Base
   validates_presence_of :address, on: :create, message: "address不能为空"
   validates_presence_of :teacher, on: :create, message: "teacher不能为空"
 
-  def is_active
+  def if_active
    	time = self.course_time.to_date
    	if time == Time.new.to_date
       self.is_active = "true"
