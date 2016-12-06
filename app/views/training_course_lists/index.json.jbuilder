@@ -1,4 +1,4 @@
-json.array!(@training_course_lists) do |training_course_list|
-  json.extract! training_course_list, :id
-  json.url training_course_list_url(training_course_list, format: :json)
-end
+json.current_page @training_courses.current_page
+json.total_pages @training_courses.total_pages
+
+json.training_courses @training_courses, partial: 'training_course_lists/training_course', as: :training_course

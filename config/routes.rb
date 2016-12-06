@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   
   ####################################################################
+  resources :training_course_lists, only: [:index, :show] do
+    collection do
+      get :list
+    end
+  end
   resources :signs, only: [:index, :show, :create]
   resources :syllabuses, only: [:index, :show]
 
