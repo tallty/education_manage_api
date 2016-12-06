@@ -10,7 +10,7 @@ class SignsController < ApplicationController
     # page = params[:page] || 1
     # per_page = params[:per_page] || 6
     # @signs = Sign.all.paginate(page: page, per_page: per_page)
-    @signs = Sign.all.page(params[:page]).per(5)
+    @signs = current_user.signs.page(params[:page]).per(5)
     respond_with(@signs)
   end
 
@@ -23,9 +23,9 @@ class SignsController < ApplicationController
   # POST /signs
   # POST /signs.json
   def create
-    @sign = Sign.new(sign_params)
+    @sign = current_user.signs.build(sign_params)
     if @sign.save
-      respond_with(@sign)
+      respond_with(@sign, template: "signs/show", status: 201)
     else
       @error = "签到 失败 ！"
       respond_with(@error)
