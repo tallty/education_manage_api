@@ -25,6 +25,8 @@ class Sign < ActiveRecord::Base
   # validates_presence_of :teacher, on: :create, message: " teacher不能为空"
   # validates_presence_of :address, on: :create, message: "address不能为空" 
 
+  scope :default_order, -> { order("created_at DESC") }
+
   def date
    	self.created_at.strftime("%Y-%m-%d")
   end 

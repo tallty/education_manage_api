@@ -7,10 +7,10 @@ class SignsController < ApplicationController
   # GET /signs
   # GET /signs.json
   def index
-    # page = params[:page] || 1
-    # per_page = params[:per_page] || 6
+    page = params[:page] || 1
+    per_page = params[:per_page] || 6
     # @signs = Sign.all.paginate(page: page, per_page: per_page)
-    @signs = current_user.signs.page(params[:page]).per(5)
+    @signs = current_user.signs.default_order.page(params[:page]).per(params[:per_page])
     respond_with(@signs)
   end
 

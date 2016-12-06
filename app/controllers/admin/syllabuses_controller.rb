@@ -5,10 +5,10 @@ class Admin::SyllabusesController < ApplicationController
   respond_to :html, :json
 
   def index
-    # page = params[:page] || 1
-    # per_page = params[:per_page] || 5
+    page = params[:page] || 1
+    per_page = params[:per_page] || 5
     # @admin_syllabuses = Syllabus.all.paginate(page: page, per_page:per_page)
-    @admin_syllabuses = Syllabus.all.page(params[:page]).per(5)
+    @admin_syllabuses = Syllabus.all.page(params[:page]).per(params[:per_page])
     respond_with(@admin_syllabuses)
   end
 

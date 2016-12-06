@@ -5,10 +5,10 @@ class Admin::SignsController < ApplicationController
   respond_to :html, :json
 
   def index
-    # page = params[:page] || 1
-    # per_page = params[:per_page] || 20
+    page = params[:page] || 1
+    per_page = params[:per_page] || 20
     # @admin_signs = Sign.all.paginate(page: page, per_page: per_page)
-    @admin_signs = Sign.all.page(params[:page]).per(20)
+    @admin_signs = Sign.all.default_order.page(params[:page]).per(params[:per_page])
     respond_with(@admin_signs)
   end
 
