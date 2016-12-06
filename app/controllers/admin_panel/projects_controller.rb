@@ -1,6 +1,5 @@
 class AdminPanel::ProjectsController < AdminPanel::BaseController
-
   def index
-    @projects = TrainingCourse.all.keyword(params[:keyword]).page(params[:page]).per(15)
+    @projects = TrainingCourse.all.page(params[:page]).per(15)
   end
 end
