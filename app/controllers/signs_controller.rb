@@ -23,13 +23,20 @@ class SignsController < ApplicationController
   # POST /signs
   # POST /signs.json
   def create
-    @sign = current_user.signs.build(sign_params)
-    if @sign.save
-      respond_with(@sign, template: "signs/show", status: 201)
+    user_id = current_user.id 
+    @user = User.all.get_user(user_id) #判断当前登录的用户是否报名了
+    if @user.present?
+      @sign = current_user.signs.build(sign_params)
+      if @sign.save
+        respond_with(@sign, template: "signs/show", status: 201)
+      else
+        @error = "签到 失败 ！"
+        respond_with(@error)
+      end
     else
-      @error = "签到 失败 ！"
+      @error = "您没有报名该培训课程，所以不能签到 ！"
       respond_with(@error)
-    end
+    end 
   end
 
   private
