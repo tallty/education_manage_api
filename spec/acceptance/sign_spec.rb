@@ -13,11 +13,12 @@ resource "学员 对课程 签到 相关的API" do
 
      before do
       @user = create(:user)
+      @syllabus = create(:syllabus)
     end
 
     parameter :syllabus_id, " 对应的课程表id(必填)",required: true, scope: :sign
     
-    let(:syllabus_id) {sign_attrs[:syllabus_id]}
+    let(:syllabus_id) { @syllabus.id }
 
     example "学员 签到 成功" do
       do_request

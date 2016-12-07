@@ -24,7 +24,8 @@ class SignsController < ApplicationController
   # POST /signs.json
   def create
      @syllabus = Syllabus.find(params[:syllabus_id])
-    _result = UserTrainingCourse.where(user_id: current_user.id, training_course_id: @syllabus.training_course_id).first
+     _result = UserTrainingCourse.where(user_id: current_user.id, training_course_id: @syllabus.training_course_id).first
+   
     if _result.present?#判断当前登录的用户是否报名了
       @sign = current_user.signs.build(sign_params)
       @sign.user_id = current_user.id
