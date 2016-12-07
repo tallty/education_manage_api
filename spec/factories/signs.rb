@@ -16,8 +16,8 @@
 
 FactoryGirl.define do
   factory :sign do
-    user_id 1
-    syllabus_id 1
+    sequence( :user_id ) { | n | "#{n}" }
+    sequence( :syllabus_id ) { | n | "#{n}" }
     # title "XXX课程"
     # teacher "XX老师"
     # address "上海松江XXXX"

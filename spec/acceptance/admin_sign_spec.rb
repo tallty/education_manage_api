@@ -12,7 +12,8 @@ resource "管理员 对学员签到 相关的API" do
 
     before do
       # @admin = create(:admin)
-      @admin_signs = create_list(:sign, 5, sign_time: Time.zone.now)
+      @syllabus = create(:syllabus)
+      @admin_signs = create_list(:sign, 1, syllabus: @syllabus)
     end
 
   #################### index #############################

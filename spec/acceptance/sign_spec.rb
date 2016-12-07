@@ -47,7 +47,7 @@ resource "学员 签到 相关的API" do
     before do
       @user = create(:user)
       # @syllabus = create(:syllabus)
-      @signs = create_list(:sign, 5, sign_time: Time.zone.now)
+      @signs = create_list(:sign, 5, user: @user)
     end
 
   #################### index #############################
