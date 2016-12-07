@@ -23,19 +23,20 @@ class SignsController < ApplicationController
   # POST /signs
   # POST /signs.json
   def create
-    user_id = current_user.id 
-    @user = User.all.get_user(user_id) #判断当前登录的用户是否报名了
-    if @user.present?
+     @syllabus = Syllabus.find(params[:syllabus_id])
+    _result = UserTrainingCourse.where(user_id: current_user.id, training_course_id: @syllabus.training_course_id).first
+    if _result.present?#判断当前登录的用户是否报名了
       @sign = current_user.signs.build(sign_params)
+      @sign.user_id = current_user.id
       if @sign.save
-        respond_with(@sign, template: "signs/show", status: 201)
+        respond_with(@sign)
       else
         @error = "签到 失败 ！"
-        respond_with(@error)
+        respond_with(@error, template: "error",status: 500)
       end
     else
       @error = "您没有报名该培训课程，所以不能签到 ！"
-      respond_with(@error)
+      respond_with(@error, template: "error",status: 500)
     end 
   end
 
@@ -47,6 +48,6 @@ class SignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sign_params
-      params.require(:sign).permit(:user_id, :syllabus_id, :title, :teacher, :address)
+      params.require(:sign).permit(:user_id, :syllabus_id)
     end
 end

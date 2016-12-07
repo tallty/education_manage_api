@@ -6,11 +6,13 @@ Rails.application.routes.draw do
       get :list
     end
   end
-  resources :signs, only: [:index, :show, :create]
-  resources :syllabuses, only: [:index, :show]
+  resources :signs, only: [:index, :show]#课程表对应的签到
+  resources :syllabuses, only: [:index, :show] do
+    resources :signs, only: [:index, :show, :create]#课程表对应的签到
+  end
 
   namespace :admin do
-    resources :signs, only: [:index, :show]
+    resources :signs, only: [:index, :show] #课程表对应的签到
     resources :syllabuses, only: [:index, :show, :create, :update, :destroy] do
       member do
         post :upload_course_list #上传课程表
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     member do
       get :print
     end
+    resources :syllabuses, only: [:index] #课程表项
     resources :journals, only: [:index]
     resources :student_feedbacks, only: [:new, :edit, :update, :show]
     resources :appraises, only: [:index, :new, :create, :edit, :update] do

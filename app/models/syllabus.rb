@@ -11,7 +11,6 @@
 #  updated_at         :datetime         not null
 #  address            :string(255)
 #  teacher            :string(255)
-#  is_active          :boolean          default(FALSE)
 #
 
 class Syllabus < ActiveRecord::Base

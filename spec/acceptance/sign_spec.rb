@@ -1,34 +1,23 @@
 require 'acceptance_helper'
 
-resource "学员 签到 相关的API" do
+resource "学员 对课程 签到 相关的API" do
   header "Accept", "application/json"
 
   #################### create #############################
-  post '/signs' do
+  post '/syllabuses/:syllabus_id/signs' do
     user_attrs = FactoryGirl.attributes_for(:user)
     sign_attrs = FactoryGirl.attributes_for(:sign)
 
     header "X-User-Token", user_attrs[:authentication_token]
     header "X-User-Email", user_attrs[:email]
 
-    parameter :syllabus_id, " 对应的课程表id(必填)",required: true, scope: :sign
-    parameter :user_id, "签到的学员名称(必填)",required: true, scope: :sign
-    # parameter :title, " 课程名称(必填)",required: true, scope: :sign
-    # parameter :content, " 课程简介(必填)",required: true, scope: :sign
-    # parameter :address, " 签到地址(必填)",required: true, scope: :sign
-    # parameter :teacher, " 培训老师(必填)",required: true, scope: :sign
-
-    let(:syllabus_id) {sign_attrs[:syllabus_id]}
-    let(:user_id) {sign_attrs[:user_id]}
-    # let(:title) {sign_attrs[:title]}
-    # let(:content) {sign_attrs[:content]}
-    # let(:address) {sign_attrs[:address]}
-    # let(:teacher) {sign_attrs[:teacher]}
-
-    before do
+     before do
       @user = create(:user)
-      # @syllabus = create(:syllabus)
     end
+
+    parameter :syllabus_id, " 对应的课程表id(必填)",required: true, scope: :sign
+    
+    let(:syllabus_id) {sign_attrs[:syllabus_id]}
 
     example "学员 签到 成功" do
       do_request
@@ -51,7 +40,7 @@ resource "学员 签到 相关的API" do
     end
 
   #################### index #############################
-    get '/signs' do
+    get '/syllabuses/:syllabus_id/signs' do
 
   	  parameter :page, "当前页", required: false
   	  parameter :per_page, "每页的数量", required: false
@@ -67,7 +56,7 @@ resource "学员 签到 相关的API" do
     end
 
     ##################### show #############################
-    get "/signs/:id" do
+    get "/syllabuses/:syllabus_id/signs/:id" do
 
   	  let(:id) {@signs.first.id}
 

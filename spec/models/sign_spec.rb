@@ -2,16 +2,11 @@
 #
 # Table name: signs
 #
-#  id                 :integer          not null, primary key
-#  training_course_id :integer
-#  user_id            :integer
-#  sign_time          :datetime
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
-#  syllabus_id        :integer
-#  title              :string(255)
-#  teacher            :string(255)
-#  address            :string(255)
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  syllabus_id :integer
 #
 
 require 'rails_helper'
