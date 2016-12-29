@@ -1,5 +1,5 @@
 ###############################
-rails的运行环境
+# rails的运行环境
 environment 'production'
 threads 2, 128
 workers 2
