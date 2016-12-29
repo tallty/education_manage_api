@@ -19,21 +19,21 @@
 	  </span>
 	  <span class="login-content">
 	    <%= link_to new_admin_session_path do %>
-	      <span class="glyphicon glyphicon-cog"></span> 管理
+	      <span class="glyphicon glyphicon-cog"></span>&nbsp;管理
 		  <% end %>
 		  <% if user_signed_in? %>
 			  <%= link_to destroy_session_path(:user), method: :delete do %>
-		      <span class="glyphicon glyphicon-log-out"></span> 退出
+		      <span class="glyphicon glyphicon-log-out"></span>&nbsp;退出
 			  <% end %>
 			  <%= link_to my_user_index_path do %>
 		      <span class="glyphicon glyphicon-user"></span> <%= current_user.name %>
 			  <% end %>
 		  <% else %>
 			  <%= link_to new_registration_path(:user) do %>
-		      <span class="glyphicon glyphicon-log-in"></span> 注册
+		      <span class="glyphicon glyphicon-log-in"></span>&nbsp;注册
 			  <% end %>
 		  	<%= link_to new_session_path(:user) do %>
-		      <span class="glyphicon glyphicon-user"></span> 登录
+		      <span class="glyphicon glyphicon-user"></span>&nbsp;登录
 			  <% end %>
 		  <% end %>
 	  </span>
