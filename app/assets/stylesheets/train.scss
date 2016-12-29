@@ -86,10 +86,12 @@
 				background-size: 100% 100%;
 				a, a:hover{
 					color: $color-white;
+					background: $color-blue;
 				}
 			}
 			a,a:hover{
 				text-decoration: none;
+				background: $color-white;
 			}
 		}
 		.apply-btn{

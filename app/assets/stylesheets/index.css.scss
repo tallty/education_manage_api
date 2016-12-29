@@ -47,11 +47,9 @@
       color: #fff;
 			background: image-url("tab_header_one.png");
 			background-size: 100% 100%;
-			&.gap-64{
-        padding-left: 3.4vw;
-			}
-			&.gap-80{
-        padding-left: 4.7vw;
+			.title {
+				width: 13vw;
+				text-align: center;
 			}
 		}
 		.panel-bg-two {
@@ -61,8 +59,9 @@
       color: #fff;
 			background: image-url("tab_header_two.png");
 			background-size: 100% 100%;
-			&.gap-70{
-        padding-left: 4vw;
+			.title {
+				width: 13vw;
+				text-align: center;
 			}
 		}
 		.bordered {
@@ -132,7 +131,7 @@
 				padding-left: 12px;
 				text-decoration: none;
 				&:hover {
-					background-color: rgba(74,74,74,0.5);
+					background-color: #dcdcdc;
 				}
 			}
 		}

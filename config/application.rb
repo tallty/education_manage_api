@@ -55,8 +55,7 @@ module OnlineTrain
     config.active_record.raise_in_transactional_callbacks = true
 
     ################ngin #########
-    # config.action_controller.asset_host = 'http://114.55.172.35/trains/'
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    # todo unannotation in production env
     config.action_controller.asset_host = 'http://114.55.172.35'
     config.assets.paths << Rails.root.join("app", "assets", "fonts", "images")
 
