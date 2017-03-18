@@ -82,7 +82,7 @@ module ApplicationHelper
     con_name = controller.controller_path.to_sym
     action_name = controller.action_name.to_sym
     menu = {
-      user: {course: 0, work: 1, journal: 2, message: 3, update: 4, my: 4},
+      user: {course: 0, work: 1, journal: 2, message: 3, update: 4, my: 5},
       "devise/registrations":  {update: 4, edit: 4}
     }
     menu[con_name][action_name] if menu.has_key?(con_name) and menu[con_name].has_key?(action_name)

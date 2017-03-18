@@ -67,17 +67,19 @@ header {
   	.login-content a {
       flex: 1;
       display: flex;
-      // flex-direction: column;
-      // justify-content: center;
+      color: #fff;
       align-items: center;
       padding: 0 5px;
       line-height: 60px;
       float: right;
       font-weight: normal;
       border-right: none;
+      &:visited {
+        color: #fff;
+      }
       &.active, &:hover {
         background: none;
-        color: red;
+        color: #F2B903;
         //text-decoration: underline;
       }
   	}

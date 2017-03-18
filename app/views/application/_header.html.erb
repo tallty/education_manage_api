@@ -42,6 +42,6 @@
 <script type="text/javascript">
 	$(function(){
 		$("header a").removeClass("active");
-		$("header a:eq(<%= get_menu_index+1 %>)").addClass("active");
+		$("header a:eq(<%= get_menu_index + 1 if get_menu_index.present? %>)").addClass("active");
 	});
 </script>
