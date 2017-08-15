@@ -8,7 +8,7 @@ class SignsController < ApplicationController
   # GET /signs.json
   def index
     page = params[:page] || 1
-    per_page = params[:per_page] || 6
+    per_page = params[:per_page] || 30
     # @signs = Sign.all.paginate(page: page, per_page: per_page)
     @signs = current_user.signs.default_order.page(params[:page]).per(params[:per_page])
     respond_with(@signs)
@@ -25,7 +25,7 @@ class SignsController < ApplicationController
   def create
      @syllabus = Syllabus.find(sign_params[:syllabus_id])
      _result = UserTrainingCourse.where(user_id: current_user.id, training_course_id: @syllabus.training_course_id).first
-   
+
     if _result.present?#判断当前登录的用户是否报名了
       @sign = current_user.signs.build(sign_params)
       @sign.user_id = current_user.id
@@ -38,7 +38,7 @@ class SignsController < ApplicationController
     else
       @error = "您没有报名该培训课程，所以不能签到 ！"
       respond_with(@error, template: "error",status: 500)
-    end 
+    end
   end
 
   private
