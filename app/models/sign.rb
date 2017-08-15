@@ -16,7 +16,7 @@ class Sign < ActiveRecord::Base
   validates_presence_of :syllabus_id, on: :create, message: " syllabus_id不能为空"
   validates_presence_of :user_id, on: :create, message: "user_id不能为空"
 
-  validates_uniqueness_of :syllabus_id, on: :create, message: "您已经签到过了，不能重复签到 ！"
+  # validates_uniqueness_of :syllabus_id, on: :create, message: "您已经签到过了，不能重复签到 ！"
 
   scope :default_order, -> { order(created_at: :desc) } #降序
 
