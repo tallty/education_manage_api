@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get :list
     end
   end
-  resources :signs, only: [:index, :show]#课程表对应的签到
+  resources :signs, only: [:index, :show, :create]#课程表对应的签到
   resources :syllabuses, only: [:index, :show] do
     resources :signs, only: [:index, :show, :create]#课程表对应的签到
   end
