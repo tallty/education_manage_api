@@ -30,6 +30,7 @@ class SignsController < ApplicationController
       @sign = current_user.signs.build(sign_params)
       @sign.user_id = current_user.id
       if @sign.save
+        @syllabus.touch
         respond_with(@sign)
       else
         @error = "签到 失败 ！"
